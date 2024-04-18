@@ -1,0 +1,283 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum CONDITION {
+  NEW
+  USED
+}
+
+model Category {
+  id            String          @id @default(uuid()) @map("_id")
+  title         String
+  imageUrl      String
+  subCategories subCategories[]
+  spareParts    SparePart[]
+  mobilePhones  MobilePhones[]
+  fashions      Fashion[]
+  constructions Construction[]
+  furnitures    Furniture[]
+  vehicles      Vehicles[]
+  toys          Toys[]
+  agricultures  Agriculture[]
+  services      Services[]
+  electronics   Electronics[]
+  ligts         Lights[]
+  realEstates   RealEstate[]
+}
+
+model subCategories {
+  id            String         @id @default(uuid()) @map("_id")
+  title         String
+  imageUrl      String
+  category      Category       @relation(fields: [categoryId], references: [id])
+  categoryId    String
+  spareParts    SparePart[]
+  mobilePhones  MobilePhones[]
+  fashions      Fashion[]
+  constructions Construction[]
+  furnitures    Furniture[]
+  vehicles      Vehicles[]
+  toys          Toys[]
+  agricultures  Agriculture[]
+  services      Services[]
+  electronics   Electronics[]
+  ligts         Lights[]
+  realEstates   RealEstate[]
+}
+
+model User {
+  id      String @id @default(uuid()) @map("_id")
+  name    String
+  email   String @unique
+  phone   String
+  address String
+}
+
+model SparePart {
+  id            String        @id @default(uuid()) @map("_id")
+  title         String
+  imageUrl      String
+  location      String
+  town          String
+  brand         String
+  model         String
+  partNumber    String
+  condition     CONDITION     @default(NEW)
+  description   String
+  price         String
+  categoryId    String
+  category      Category      @relation(fields: [categoryId], references: [id])
+  subCategoryId String
+  subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+}
+
+model MobilePhones {
+  id            String        @id @default(uuid()) @map("_id")
+  title         String
+  imageUrl      String
+  location      String
+  town          String
+  brand         String
+  model         String
+  storage       String
+  ram           String
+  os            String
+  condition     CONDITION     @default(NEW)
+  description   String
+  price         String
+  categoryId    String
+  category      Category      @relation(fields: [categoryId], references: [id])
+  subCategoryId String
+  subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+}
+
+model Fashion {
+  id            String        @id @default(uuid()) @map("_id")
+  title         String
+  imageUrl      String
+  location      String
+  town          String
+  brand         String
+  size          String
+  color         String
+  condition     CONDITION     @default(NEW)
+  description   String
+  price         String
+  categoryId    String
+  category      Category      @relation(fields: [categoryId], references: [id])
+  subCategoryId String
+  subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+}
+
+model Construction {
+  id            String        @id @default(uuid()) @map("_id")
+  title         String
+  imageUrl      String
+  location      String
+  town          String
+  brand         String
+  types         String
+  condition     CONDITION     @default(NEW)
+  description   String
+  price         String
+  categoryId    String
+  category      Category      @relation(fields: [categoryId], references: [id])
+  subCategoryId String
+  subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+}
+
+model Furniture {
+  id            String        @id @default(uuid()) @map("_id")
+  title         String
+  imageUrl      String
+  location      String
+  town          String
+  brand         String
+  types         String
+  condition     CONDITION     @default(NEW)
+  description   String
+  price         String
+  categoryId    String
+  category      Category      @relation(fields: [categoryId], references: [id])
+  subCategoryId String
+  subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+}
+
+model Vehicles {
+  id            String        @id @default(uuid()) @map("_id")
+  title         String
+  imageUrl      String
+  location      String
+  town          String
+  brand         String
+  model         String
+  mileage       String
+  engineSize    String
+  wheelDrive    String
+  bodyType      String
+  yom           String
+  condition     CONDITION     @default(NEW)
+  description   String
+  price         String
+  categoryId    String
+  category      Category      @relation(fields: [categoryId], references: [id])
+  subCategoryId String
+  subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+}
+
+model Toys {
+  id            String        @id @default(uuid()) @map("_id")
+  title         String
+  imageUrl      String
+  location      String
+  town          String
+  brand         String
+  model         String
+  type          String
+  condition     CONDITION     @default(NEW)
+  description   String
+  price         String
+  categoryId    String
+  category      Category      @relation(fields: [categoryId], references: [id])
+  subCategoryId String
+  subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+}
+
+model Agriculture {
+  id            String        @id @default(uuid()) @map("_id")
+  title         String
+  imageUrl      String
+  location      String
+  town          String
+  brand         String
+  model         String
+  yom           String
+  condition     CONDITION     @default(NEW)
+  description   String
+  price         String
+  categoryId    String
+  category      Category      @relation(fields: [categoryId], references: [id])
+  subCategoryId String
+  subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+}
+
+model Services {
+  id            String        @id @default(uuid()) @map("_id")
+  title         String
+  imageUrl      String
+  location      String
+  town          String
+  occupation    String
+  rate          String
+  description   String
+  price         String
+  categoryId    String
+  category      Category      @relation(fields: [categoryId], references: [id])
+  subCategoryId String
+  subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+}
+
+model Electronics {
+  id            String        @id @default(uuid()) @map("_id")
+  title         String
+  imageUrl      String
+  location      String
+  town          String
+  brand         String
+  model         String
+  specs         String
+  condition     CONDITION     @default(NEW)
+  description   String
+  price         String
+  categoryId    String
+  category      Category      @relation(fields: [categoryId], references: [id])
+  subCategoryId String
+  subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+}
+
+model Lights {
+  id            String        @id @default(uuid()) @map("_id")
+  title         String
+  imageUrl      String
+  location      String
+  town          String
+  brand         String
+  model         String
+  type          String
+  condition     CONDITION     @default(NEW)
+  description   String
+  price         String
+  categoryId    String
+  category      Category      @relation(fields: [categoryId], references: [id])
+  subCategoryId String
+  subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+}
+
+model RealEstate {
+  id            String        @id @default(uuid()) @map("_id")
+  title         String
+  imageUrl      String
+  location      String
+  town          String
+  type          String
+  size          String
+  condition     CONDITION     @default(NEW)
+  description   String
+  price         String
+  categoryId    String
+  category      Category      @relation(fields: [categoryId], references: [id])
+  subCategoryId String
+  subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+}
