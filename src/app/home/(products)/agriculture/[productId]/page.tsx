@@ -28,27 +28,35 @@ const Page = async ({ params }: { params: { productId: string } }) => {
               {agriculture?.title}
             </p>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Brand:</h4>
-            <p>{agriculture?.brand}</p>
+            <p className="bg-white rounded-md px-2 w-full truncate">
+              {agriculture?.brand}
+            </p>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Model:</h4>
-            <p>{agriculture?.model}</p>
+            <p className="bg-white rounded-md px-2 w-full truncate">
+              {agriculture?.model}
+            </p>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Y.O.M:</h4>
-            <p>{agriculture?.yom}</p>
+            <p className="bg-white rounded-md px-2 w-full truncate">
+              {agriculture?.yom}
+            </p>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Location:</h4>
-            <p>{agriculture?.location}</p>
+            <p className="bg-white rounded-md px-2 w-full truncate">
+              {agriculture?.location}
+            </p>
           </div>
         </div>
         <p className="mt-2 font-semibold">Description</p>
-        <Button className="h-6">{agriculture?.condition}</Button>
+        <p className="">{agriculture?.description}</p>
       </div>
       <SellerDetails />
       <RateSeller />
