@@ -73,7 +73,7 @@ const Header = () => {
             </DropdownMenuItem>
             <DropdownMenuItem>
               <Link
-                href="/home/subCategories"
+                href="/sell/packages"
                 className="flex items-center gap-10 w-full text-lg ms-2"
               >
                 <IoIosPricetags />
