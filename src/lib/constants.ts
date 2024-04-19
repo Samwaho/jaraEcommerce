@@ -74,3 +74,49 @@ export const categories = [
     link: "",
   },
 ];
+
+export const packages = [
+  {
+    title: "free",
+    days: "forever",
+    ads: "3",
+    price: "0"
+  },
+  {
+    title: "gold",
+    days: "15 days",
+    ads: "4",
+    price: "999"
+  },
+  {
+    title: "platinum",
+    days: "30 days",
+    ads: "20",
+    price: "1999"
+  },
+  {
+    title: "diamond",
+    days: "30 days",
+    ads: "25",
+    price: "4000"
+  },
+  {
+    title: "diamond plus",
+    days: "30 days",
+    ads: "100",
+    price: "15,000"
+  },
+  {
+    title: "emerald",
+    days: "30days",
+    ads: "150",
+    price: "16,500"
+  },
+  {
+    title: "enterprice",
+    days: "30 days",
+    ads: "150",
+    price: "24,000"
+  },
+  
+]
