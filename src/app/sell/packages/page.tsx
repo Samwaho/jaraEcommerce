@@ -7,7 +7,7 @@ const Page = () => {
     <div className="p-4">
       <div className="grid grid-cols-2 gap-4">
         {packages.map((item) => (
-          <div className="bg-white p-2 rounded-md shadow-md">
+          <div key={item.title} className="bg-white p-2 rounded-md shadow-md">
             <h2>{item.title}</h2>
             <div className="flex items-center justify-between mt-3">
               <h4 className="font-semibold">Days:</h4>
