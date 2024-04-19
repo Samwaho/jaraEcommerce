@@ -21,7 +21,7 @@ const Page = () => {
             </div>
             <div className="flex items-center justify-between">
               <h4 className="font-semibold">Price:</h4>
-              <p>{item.price}</p>
+              <p>Ksh {item.price}</p>
             </div>
             <Button className="mt-3 w-full h-8">Subscribe</Button>
           </div>
