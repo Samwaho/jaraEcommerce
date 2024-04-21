@@ -21,6 +21,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { FaUpload } from "react-icons/fa";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -303,12 +304,23 @@ const MobilePhoneForm = ({ categoryId, subCategoryId }: Props) => {
             />
           </div>
           <div className="flex items-center mt-4 gap-6">
-            <Button className="w-24" disabled={isLoading} type="submit">
-              {isLoading ? <Loading /> : "Upload"}
+            <Button
+              className="flex-1 flex items-center gap-2"
+              disabled={isLoading}
+              type="submit"
+            >
+              {isLoading ? (
+                <Loading />
+              ) : (
+                <div className="flex items-center gap-2">
+                  <FaUpload />
+                  <p>Upload</p>
+                </div>
+              )}
             </Button>
-            <Link href={`/home`}>
+            <Link className="flex-1" href={`/home`}>
               <Button
-                className="w-24 bg-transparent border border-red-500 text-red-500"
+                className="w-full bg-transparent border border-red-500 text-red-500"
                 disabled={isLoading}
                 type="button"
               >

@@ -1,18 +1,13 @@
 import React from "react";
 import { FaRegStar } from "react-icons/fa";
 import { Progress } from "../ui/progress";
+import Rating from "./rating/page";
 
 const RateSeller = () => {
   return (
     <div className="mt-3 p-3 rounded-md shadow-md bg-white">
       <h2 className="font-bold uppercase">Rate Seller&apos;s Product </h2>
-      <div className="flex items-center gap-3 mt-2 text-lg">
-        <FaRegStar />
-        <FaRegStar />
-        <FaRegStar />
-        <FaRegStar />
-        <FaRegStar />
-      </div>
+      <Rating />
       <p className="mt-3 font-semibold">Product Rating (3.0)</p>
       <div className="flex items-center gap-6 mt-2">
         <p>5star</p>

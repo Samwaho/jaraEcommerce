@@ -22,21 +22,21 @@ const Page = async ({ params }: { params: { productId: string } }) => {
         <h2 className="mt-4 font-bold text-xl">{`Ksh ${furniture?.price}`}</h2>
         <h2 className="mt-4 font-bold uppercase">Product details</h2>
         <div className="flex flex-col gap-2 bg-main-bg p-2 rounded-lg mt-2">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Title:</h4>
-            <p>{furniture?.title}</p>
+            <p className="bg-white rounded-md ms-8 px-2 w-full truncate">{furniture?.title}</p>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Brand:</h4>
-            <p>{furniture?.brand}</p>
+            <p className="bg-white rounded-md ms-5 px-2 w-full truncate">{furniture?.brand}</p>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Type:</h4>
-            <p>{furniture?.types}</p>
+            <p className="bg-white rounded-md ms-7 px-2 w-full truncate">{furniture?.types}</p>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Location:</h4>
-            <p>{furniture?.location}</p>
+            <p className="bg-white rounded-md  px-2 w-full truncate">{furniture?.location}</p>
           </div>
         </div>
         <p className="mt-2 font-semibold">Description</p>

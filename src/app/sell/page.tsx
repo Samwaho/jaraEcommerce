@@ -194,7 +194,9 @@ const Sell = () => {
         </Popover>
       </div>
       {categoryForms[CategoryName.toLowerCase().replace(/\s+/g, "")] || (
-        <p>{categoryForms["mobilephones"]}</p>
+        <div>
+          <p>{categoryForms["mobilephones"]}</p>
+        </div>
       )}
     </div>
   );

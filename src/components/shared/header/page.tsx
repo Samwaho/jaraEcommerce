@@ -47,9 +47,9 @@ const Header = () => {
                 </div>
               </SignedIn>
               <SignedOut>
-                <Button className="bg-white text-slate-900 p-2 h-6 hover:border">
-                  Login
-                </Button>
+              <div className="flex items-center justify-center"><Button className="text-white bg-gradient-to-tr w-32 from-sky-400 to-sky-600 p-2 h-6">
+              Login
+            </Button></div>
               </SignedOut>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />

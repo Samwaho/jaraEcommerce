@@ -3,18 +3,14 @@ import { FaRegStar } from "react-icons/fa";
 import { Progress } from "../ui/progress";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import Rating from "./rating/page";
+import { Textarea } from "../ui/textarea";
 
 const RateSellerService = () => {
   return (
     <div className="mt-3 p-3 rounded-md shadow-md bg-white">
       <h2 className="font-bold uppercase">Rate Seller&apos;s Service </h2>
-      <div className="flex items-center gap-3 mt-2 text-lg">
-        <FaRegStar />
-        <FaRegStar />
-        <FaRegStar />
-        <FaRegStar />
-        <FaRegStar />
-      </div>
+      <Rating />
       <p className="mt-3 font-semibold">Service Rating (3.0)</p>
       <div className="flex items-center gap-6 mt-2">
         <p>5star</p>
@@ -42,7 +38,7 @@ const RateSellerService = () => {
         <p>4</p>
       </div>
       <p className="mt-4 opacity-80 uppercase font-semibold">Review</p>
-      <Input placeholder="Type your Review" />
+      <Textarea placeholder="Type your Review" />
       <div className="flex justify-center mt-4">
         <Button className="h-8 bg-gradient-to-tl from-sky-700 to-sky-500">
           Submit Your Review

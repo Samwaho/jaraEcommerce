@@ -2,6 +2,7 @@ import React from "react";
 import { FaPhoneAlt, FaRegStar, FaWhatsapp } from "react-icons/fa";
 import { Button } from "../ui/button";
 import { MdEmail } from "react-icons/md";
+import Rating from "./rating/page";
 
 const SellerDetails = () => {
   return (
@@ -10,13 +11,7 @@ const SellerDetails = () => {
       <p className="font-semibold text-sm mt-4 flex gap-4">
         Name: <span className="font-normal">Felix Karim</span>
       </p>
-      <div className="flex items-center gap-3 mt-2 text-lg">
-        <FaRegStar />
-        <FaRegStar />
-        <FaRegStar />
-        <FaRegStar />
-        <FaRegStar />
-      </div>
+      <Rating/>
       <div className="flex items-center gap-2 justify-center mt-3">
         <Button className="flex gap-1 bg-gradient-to-tl from-sky-500 to-sky-700 h-6 text-xs">
           <FaPhoneAlt /> <span>Phone</span>

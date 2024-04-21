@@ -22,25 +22,25 @@ const Page = async ({ params }: { params: { productId: string } }) => {
         <h2 className="mt-4 font-bold text-xl">{`Ksh ${sparePart?.price}`}</h2>
         <h2 className="mt-4 font-bold uppercase">Product details</h2>
         <div className="flex flex-col gap-2 bg-main-bg p-2 rounded-lg mt-2">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Title:</h4>
-            <p>{sparePart?.title}</p>
+            <p className="bg-white rounded-md px-2 w-full truncate">{sparePart?.title}</p>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Brand:</h4>
-            <p>{sparePart?.brand}</p>
+            <p className="bg-white rounded-md px-2 w-full truncate">{sparePart?.brand}</p>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Model:</h4>
-            <p>{sparePart?.model}</p>
+            <p className="bg-white rounded-md px-2 w-full truncate">{sparePart?.model}</p>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Part Number:</h4>
-            <p>{sparePart?.partNumber}</p>
+            <p className="bg-white rounded-md px-2 w-full truncate">{sparePart?.partNumber}</p>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Location:</h4>
-            <p>{sparePart?.location}</p>
+            <p className="bg-white rounded-md px-2 w-full truncate">{sparePart?.location}</p>
           </div>
         </div>
         <p className="mt-2 font-semibold">Description</p>

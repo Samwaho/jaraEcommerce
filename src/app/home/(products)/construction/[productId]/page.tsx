@@ -22,21 +22,21 @@ const Page = async ({ params }: { params: { productId: string } }) => {
         <h2 className="mt-4 font-bold text-xl">{`Ksh ${construction?.price}`}</h2>
         <h2 className="mt-4 font-bold uppercase">Product details</h2>
         <div className="flex flex-col gap-2 bg-main-bg p-2 rounded-lg mt-2">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Title:</h4>
-            <p>{construction?.title}</p>
+            <p className="bg-white rounded-md ms-8 px-2 w-full truncate">{construction?.title}</p>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Brand:</h4>
-            <p>{construction?.brand}</p>
+            <p className="bg-white rounded-md ms-5 px-2 w-full truncate">{construction?.brand}</p>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Type:</h4>
-            <p>{construction?.types}</p>
+            <p className="bg-white rounded-md ms-7 px-2 w-full truncate">{construction?.types}</p>
           </div>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-10">
             <h4 className="font-semibold">Location:</h4>
-            <p>{construction?.location}</p>
+            <p className="bg-white rounded-md  px-2 w-full truncate">{construction?.location}</p>
           </div>
         </div>
         <p className="mt-2 font-semibold">Description</p>

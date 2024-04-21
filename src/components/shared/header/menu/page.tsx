@@ -32,9 +32,10 @@ const Page = () => {
             </div>
           </SignedIn>
           <SignedOut>
-            <Button className="bg-white text-slate-900 p-2 h-6 hover:border">
+            <div className="flex items-center justify-center"><Button className="bg-white mx-auto text-slate-900 p-2 h-6 hover:border">
               Login
-            </Button>
+            </Button></div>
+            
           </SignedOut>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
