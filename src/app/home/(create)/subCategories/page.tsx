@@ -74,7 +74,7 @@ const Page = ({ data }: Props) => {
         "🚀 ~ handleSubmit ~ Successfully saved the Category:",
         response
       );
-      router.push("/home");
+      // router.push("/home");
     } catch (error) {
       console.log("🚀 ~ handleSubmit ~ error:", error);
     }

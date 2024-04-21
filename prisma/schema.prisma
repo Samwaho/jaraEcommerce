@@ -65,10 +65,46 @@ model User {
   address String
 }
 
+model Seller {
+  id            String         @id @default(uuid()) @map("_id")
+  name          String
+  email         String         @unique
+  phone         String
+  address       String
+  county        String
+  country       String
+  imageUrl      String
+  whatsppUrl    String
+  rating        Int
+  reviews       Review[]
+  spareParts    SparePart[]
+  mobilePhones  MobilePhones[]
+  electronics   Electronics[]
+  ligts         Lights[]
+  realEstates   RealEstate[]
+  fashions      Fashion[]
+  services      Services[]
+  constructions Construction[]
+  furniture     Furniture[]
+  vehicles      Vehicles[]
+  toys          Toys[]
+  agriculture   Agriculture[]
+}
+
+model Review {
+  id        String   @id @default(uuid()) @map("_id")
+  review    String
+  rating    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  sellerId  String
+  seller    Seller   @relation(fields: [sellerId], references: [id])
+}
+
 model SparePart {
   id            String        @id @default(uuid()) @map("_id")
   title         String
-  imageUrl      String
+  imageUrls     String[]
   location      String
   town          String
   brand         String
@@ -77,16 +113,19 @@ model SparePart {
   condition     CONDITION     @default(NEW)
   description   String
   price         String
+  rating        Int?
   categoryId    String
   category      Category      @relation(fields: [categoryId], references: [id])
   subCategoryId String
   subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+  sellerId      String
+  seller        Seller        @relation(fields: [sellerId], references: [id])
 }
 
 model MobilePhones {
   id            String        @id @default(uuid()) @map("_id")
   title         String
-  imageUrl      String
+  imageUrls     String[]
   location      String
   town          String
   brand         String
@@ -97,16 +136,19 @@ model MobilePhones {
   condition     CONDITION     @default(NEW)
   description   String
   price         String
+  rating        Int?
   categoryId    String
   category      Category      @relation(fields: [categoryId], references: [id])
   subCategoryId String
   subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+  sellerId      String
+  seller        Seller        @relation(fields: [sellerId], references: [id])
 }
 
 model Fashion {
   id            String        @id @default(uuid()) @map("_id")
   title         String
-  imageUrl      String
+  imageUrls     String[]
   location      String
   town          String
   brand         String
@@ -115,16 +157,19 @@ model Fashion {
   condition     CONDITION     @default(NEW)
   description   String
   price         String
+  rating        Int?
   categoryId    String
   category      Category      @relation(fields: [categoryId], references: [id])
   subCategoryId String
   subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+  sellerId      String
+  seller        Seller        @relation(fields: [sellerId], references: [id])
 }
 
 model Construction {
   id            String        @id @default(uuid()) @map("_id")
   title         String
-  imageUrl      String
+  imageUrls     String[]
   location      String
   town          String
   brand         String
@@ -132,16 +177,19 @@ model Construction {
   condition     CONDITION     @default(NEW)
   description   String
   price         String
+  rating        Int?
   categoryId    String
   category      Category      @relation(fields: [categoryId], references: [id])
   subCategoryId String
   subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+  sellerId      String
+  seller        Seller        @relation(fields: [sellerId], references: [id])
 }
 
 model Furniture {
   id            String        @id @default(uuid()) @map("_id")
   title         String
-  imageUrl      String
+  imageUrls     String[]
   location      String
   town          String
   brand         String
@@ -149,16 +197,19 @@ model Furniture {
   condition     CONDITION     @default(NEW)
   description   String
   price         String
+  rating        Int?
   categoryId    String
   category      Category      @relation(fields: [categoryId], references: [id])
   subCategoryId String
   subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+  sellerId      String
+  seller        Seller        @relation(fields: [sellerId], references: [id])
 }
 
 model Vehicles {
   id            String        @id @default(uuid()) @map("_id")
   title         String
-  imageUrl      String
+  imageUrls     String[]
   location      String
   town          String
   brand         String
@@ -171,16 +222,19 @@ model Vehicles {
   condition     CONDITION     @default(NEW)
   description   String
   price         String
+  rating        Int?
   categoryId    String
   category      Category      @relation(fields: [categoryId], references: [id])
   subCategoryId String
   subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+  sellerId      String
+  seller        Seller        @relation(fields: [sellerId], references: [id])
 }
 
 model Toys {
   id            String        @id @default(uuid()) @map("_id")
   title         String
-  imageUrl      String
+  imageUrls     String[]
   location      String
   town          String
   brand         String
@@ -189,16 +243,19 @@ model Toys {
   condition     CONDITION     @default(NEW)
   description   String
   price         String
+  rating        Int?
   categoryId    String
   category      Category      @relation(fields: [categoryId], references: [id])
   subCategoryId String
   subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+  sellerId      String
+  seller        Seller        @relation(fields: [sellerId], references: [id])
 }
 
 model Agriculture {
   id            String        @id @default(uuid()) @map("_id")
   title         String
-  imageUrl      String
+  imageUrls     String[]
   location      String
   town          String
   brand         String
@@ -207,32 +264,38 @@ model Agriculture {
   condition     CONDITION     @default(NEW)
   description   String
   price         String
+  rating        Int?
   categoryId    String
   category      Category      @relation(fields: [categoryId], references: [id])
   subCategoryId String
   subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+  sellerId      String
+  seller        Seller        @relation(fields: [sellerId], references: [id])
 }
 
 model Services {
   id            String        @id @default(uuid()) @map("_id")
   title         String
-  imageUrl      String
+  imageUrls     String[]
   location      String
   town          String
   occupation    String
   rate          String
   description   String
   price         String
+  rating        Int?
   categoryId    String
   category      Category      @relation(fields: [categoryId], references: [id])
   subCategoryId String
   subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+  sellerId      String
+  seller        Seller        @relation(fields: [sellerId], references: [id])
 }
 
 model Electronics {
   id            String        @id @default(uuid()) @map("_id")
   title         String
-  imageUrl      String
+  imageUrls     String[]
   location      String
   town          String
   brand         String
@@ -241,16 +304,19 @@ model Electronics {
   condition     CONDITION     @default(NEW)
   description   String
   price         String
+  rating        Int?
   categoryId    String
   category      Category      @relation(fields: [categoryId], references: [id])
   subCategoryId String
   subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+  sellerId      String
+  seller        Seller        @relation(fields: [sellerId], references: [id])
 }
 
 model Lights {
   id            String        @id @default(uuid()) @map("_id")
   title         String
-  imageUrl      String
+  imageUrls     String[]
   location      String
   town          String
   brand         String
@@ -259,16 +325,19 @@ model Lights {
   condition     CONDITION     @default(NEW)
   description   String
   price         String
+  rating        Int?
   categoryId    String
   category      Category      @relation(fields: [categoryId], references: [id])
   subCategoryId String
   subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+  sellerId      String
+  seller        Seller        @relation(fields: [sellerId], references: [id])
 }
 
 model RealEstate {
   id            String        @id @default(uuid()) @map("_id")
   title         String
-  imageUrl      String
+  imageUrls     String[]
   location      String
   town          String
   type          String
@@ -276,8 +345,11 @@ model RealEstate {
   condition     CONDITION     @default(NEW)
   description   String
   price         String
+  rating        Int?
   categoryId    String
   category      Category      @relation(fields: [categoryId], references: [id])
   subCategoryId String
   subCategory   subCategories @relation(fields: [subCategoryId], references: [id])
+  sellerId      String
+  seller        Seller        @relation(fields: [sellerId], references: [id])
 }

@@ -19,7 +19,7 @@ export const ourFileRouter = {
   agencyLogo: f({ image: { maxFileSize: "4MB", maxFileCount: 1 } })
     .middleware(authenticateUser)
     .onUploadComplete(() => {}),
-  media: f({ image: { maxFileSize: "4MB", maxFileCount: 1 } })
+  media: f({ image: { maxFileSize: "4MB", maxFileCount: 5 } })
     .middleware(authenticateUser)
     .onUploadComplete(() => {}),
 } satisfies FileRouter;

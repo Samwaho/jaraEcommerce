@@ -32,7 +32,7 @@ const ServicesForm = ({ categoryId, subCategoryId }: Props) => {
     resolver: zodResolver(servicesSchema),
     defaultValues: {
       title: "",
-      imageUrl: "",
+      imageUrls: [],
       location: "",
       town: "",
       occupation: "",
@@ -50,7 +50,7 @@ const ServicesForm = ({ categoryId, subCategoryId }: Props) => {
     try {
       const response = await createService({
         title: values.title,
-        imageUrl: values.imageUrl,
+        imageUrls: values.imageUrls,
         location: values.location,
         town: values.town,
         occupation: values.occupation,
@@ -59,6 +59,8 @@ const ServicesForm = ({ categoryId, subCategoryId }: Props) => {
         price: values.price,
         categoryId: categoryId,
         subCategoryId: subCategoryId,
+        rating: null,
+        sellerId: "",
       });
       toast("Product has been created", {
         description: "successfully saved",
@@ -78,7 +80,7 @@ const ServicesForm = ({ categoryId, subCategoryId }: Props) => {
           <FormField
             disabled={isLoading}
             control={form.control}
-            name="imageUrl"
+            name="imageUrls"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
@@ -95,7 +97,7 @@ const ServicesForm = ({ categoryId, subCategoryId }: Props) => {
                 </FormLabel>
                 <FormControl>
                   <FileUpload
-                    apiEndpoint="userAvatar"
+                    apiEndpoint="media"
                     onChange={field.onChange}
                     value={field.value}
                   />

@@ -78,6 +78,7 @@ const Sell = () => {
     try {
       const subCategoriesData = await getSubCategories(value);
       setSubCategories(subCategoriesData);
+      console.log(subCategoriesData);
     } catch (error) {
       console.log("🚀 ~ getSubCategoriesData ~ error:", error);
     }

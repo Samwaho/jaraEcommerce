@@ -33,7 +33,7 @@ const LightsForm = ({ categoryId, subCategoryId }: Props) => {
     resolver: zodResolver(lightsSchema),
     defaultValues: {
       title: "",
-      imageUrl: "",
+      imageUrls: [],
       location: "",
       town: "",
       brand: "",
@@ -53,7 +53,7 @@ const LightsForm = ({ categoryId, subCategoryId }: Props) => {
     try {
       const response = await createLight({
         title: values.title,
-        imageUrl: values.imageUrl,
+        imageUrls: values.imageUrls,
         location: values.location,
         town: values.town,
         brand: values.brand,
@@ -64,6 +64,8 @@ const LightsForm = ({ categoryId, subCategoryId }: Props) => {
         price: values.price,
         categoryId: categoryId,
         subCategoryId: subCategoryId,
+        rating: null,
+        sellerId: "",
       });
       toast("Product has been created", {
         description: "successfully saved",
@@ -83,7 +85,7 @@ const LightsForm = ({ categoryId, subCategoryId }: Props) => {
           <FormField
             disabled={isLoading}
             control={form.control}
-            name="imageUrl"
+            name="imageUrls"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
@@ -100,7 +102,7 @@ const LightsForm = ({ categoryId, subCategoryId }: Props) => {
                 </FormLabel>
                 <FormControl>
                   <FileUpload
-                    apiEndpoint="userAvatar"
+                    apiEndpoint="media"
                     onChange={field.onChange}
                     value={field.value}
                   />

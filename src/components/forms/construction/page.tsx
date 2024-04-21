@@ -33,7 +33,7 @@ const ConstructionForm = ({ categoryId, subCategoryId }: Props) => {
     resolver: zodResolver(constructionSchema),
     defaultValues: {
       title: "",
-      imageUrl: "",
+      imageUrls: [],
       location: "",
       town: "",
       brand: "",
@@ -52,7 +52,7 @@ const ConstructionForm = ({ categoryId, subCategoryId }: Props) => {
     try {
       const response = await createConstruction({
         title: values.title,
-        imageUrl: values.imageUrl,
+        imageUrls: values.imageUrls,
         location: values.location,
         town: values.town,
         brand: values.brand,
@@ -62,10 +62,10 @@ const ConstructionForm = ({ categoryId, subCategoryId }: Props) => {
         price: values.price,
         categoryId: categoryId,
         subCategoryId: subCategoryId,
+        rating: null,
+        sellerId: "",
       });
-      toast("Product has been created", {
-        description: "successfully saved",
-      });
+      alert("Successfully uploaded product");
       console.log(
         "🚀 ~ handleSubmit ~ Successfully saved the Product:",
         response
@@ -81,7 +81,7 @@ const ConstructionForm = ({ categoryId, subCategoryId }: Props) => {
           <FormField
             disabled={isLoading}
             control={form.control}
-            name="imageUrl"
+            name="imageUrls"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
@@ -98,7 +98,7 @@ const ConstructionForm = ({ categoryId, subCategoryId }: Props) => {
                 </FormLabel>
                 <FormControl>
                   <FileUpload
-                    apiEndpoint="userAvatar"
+                    apiEndpoint="media"
                     onChange={field.onChange}
                     value={field.value}
                   />

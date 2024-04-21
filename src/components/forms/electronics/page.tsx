@@ -14,9 +14,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { createElecronic } from "@/lib/actions";
 import { electronicsSchema } from "@/lib/zodSchemas";
+import { currentUser } from "@clerk/nextjs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FaUpload } from "react-icons/fa";
@@ -33,7 +34,7 @@ const ElectronicsForm = ({ categoryId, subCategoryId }: Props) => {
     resolver: zodResolver(electronicsSchema),
     defaultValues: {
       title: "",
-      imageUrl: "",
+      imageUrls: [],
       location: "",
       town: "",
       brand: "",
@@ -48,12 +49,19 @@ const ElectronicsForm = ({ categoryId, subCategoryId }: Props) => {
   });
 
   const isLoading = form.formState.isSubmitting;
+  const router = useRouter();
 
   const handleSubmit = async (values: z.infer<typeof electronicsSchema>) => {
     try {
+      try {
+        const seller = await currentUser();
+        if (!seller) return router.push("/sign-in");
+      } catch (error) {
+        console.log("🚀 ~ createElecronic ~ error:", error);
+      }
       const response = await createElecronic({
         title: values.title,
-        imageUrl: values.imageUrl,
+        imageUrls: values.imageUrls,
         location: values.location,
         town: values.town,
         brand: values.brand,
@@ -64,10 +72,10 @@ const ElectronicsForm = ({ categoryId, subCategoryId }: Props) => {
         price: values.price,
         categoryId: categoryId,
         subCategoryId: subCategoryId,
+        rating: null,
+        sellerId: "",
       });
-      toast("Product has been created", {
-        description: "successfully saved",
-      });
+      alert("Successfully uploaded product");
       console.log(
         "🚀 ~ handleSubmit ~ Successfully saved the Product:",
         response
@@ -83,7 +91,7 @@ const ElectronicsForm = ({ categoryId, subCategoryId }: Props) => {
           <FormField
             disabled={isLoading}
             control={form.control}
-            name="imageUrl"
+            name="imageUrls"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
@@ -100,7 +108,7 @@ const ElectronicsForm = ({ categoryId, subCategoryId }: Props) => {
                 </FormLabel>
                 <FormControl>
                   <FileUpload
-                    apiEndpoint="userAvatar"
+                    apiEndpoint="media"
                     onChange={field.onChange}
                     value={field.value}
                   />

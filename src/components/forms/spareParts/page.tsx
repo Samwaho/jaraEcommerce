@@ -34,7 +34,7 @@ const SparePartForm = ({ categoryId, subCategoryId }: Props) => {
     resolver: zodResolver(sparePartSchema),
     defaultValues: {
       title: "",
-      imageUrl: "",
+      imageUrls: [],
       location: "",
       town: "",
       brand: "",
@@ -54,7 +54,7 @@ const SparePartForm = ({ categoryId, subCategoryId }: Props) => {
     try {
       const response = await createSparePart({
         title: values.title,
-        imageUrl: values.imageUrl,
+        imageUrls: values.imageUrls,
         location: values.location,
         town: values.town,
         brand: values.brand,
@@ -65,6 +65,8 @@ const SparePartForm = ({ categoryId, subCategoryId }: Props) => {
         price: values.price,
         categoryId: categoryId,
         subCategoryId: subCategoryId,
+        rating: null,
+        sellerId: "",
       });
       toast("Product has been created", {
         description: "successfully saved",
@@ -84,7 +86,7 @@ const SparePartForm = ({ categoryId, subCategoryId }: Props) => {
           <FormField
             disabled={isLoading}
             control={form.control}
-            name="imageUrl"
+            name="imageUrls"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
@@ -101,7 +103,7 @@ const SparePartForm = ({ categoryId, subCategoryId }: Props) => {
                 </FormLabel>
                 <FormControl>
                   <FileUpload
-                    apiEndpoint="userAvatar"
+                    apiEndpoint="media"
                     onChange={field.onChange}
                     value={field.value}
                   />

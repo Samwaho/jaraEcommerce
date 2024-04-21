@@ -17,6 +17,7 @@ import {
   RealEstate,
 } from "@prisma/client";
 import { db } from "./db";
+import { currentUser } from "@clerk/nextjs";
 
 export const upsertCategory = async (categoryData: Category) => {
   try {
@@ -153,6 +154,7 @@ export const createService = async (service: Services) => {
 
 export const createElecronic = async (electronic: Electronics) => {
   try {
+    
     const electronicData = await db.electronics.create({
       data: electronic,
     });

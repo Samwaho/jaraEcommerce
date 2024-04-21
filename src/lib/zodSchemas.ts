@@ -14,7 +14,7 @@ export const subCategorySchema = z.object({
 
 export const sparePartSchema = z.object({
   title: z.string(),
-  imageUrl: z.string(), // Array of strings for image URLs
+  imageUrls: z.array(z.string()), // Array of strings for image URLs
   location: z.string(),
   town: z.string(),
   brand: z.string(),
@@ -29,7 +29,7 @@ export const sparePartSchema = z.object({
 
 export const mobilePhonesSchema = z.object({
   title: z.string(),
-  imageUrl: z.string(), // Assuming it's a URL
+  imageUrls: z.array(z.string()), // Assuming it's a URL
   location: z.string(),
   town: z.string(),
   brand: z.string(),
@@ -45,7 +45,7 @@ export const mobilePhonesSchema = z.object({
 });
 export const fashionSchema = z.object({
   title: z.string(),
-  imageUrl: z.string(), // Assuming it's a URL
+  imageUrls: z.array(z.string()), // Assuming it's a URL
   location: z.string(),
   town: z.string(),
   brand: z.string(),
@@ -59,7 +59,7 @@ export const fashionSchema = z.object({
 });
 export const constructionSchema = z.object({
   title: z.string(),
-  imageUrl: z.string(), // Assuming it's a URL
+  imageUrls: z.array(z.string()), // Assuming it's a URL
   location: z.string(),
   town: z.string(),
   brand: z.string(),
@@ -72,7 +72,7 @@ export const constructionSchema = z.object({
 });
 export const furnitureSchema = z.object({
   title: z.string(),
-  imageUrl: z.string(), // Assuming it's a URL
+  imageUrls: z.array(z.string()), // Assuming it's a URL
   location: z.string(),
   town: z.string(),
   brand: z.string(),
@@ -85,7 +85,7 @@ export const furnitureSchema = z.object({
 });
 export const vehicleSchema = z.object({
   title: z.string(),
-  imageUrl: z.string(), // Assuming it's a URL
+  imageUrls: z.array(z.string()), // Assuming it's a URL
   location: z.string(),
   town: z.string(),
   brand: z.string(),
@@ -103,7 +103,7 @@ export const vehicleSchema = z.object({
 });
 export const toySchema = z.object({
   title: z.string(),
-  imageUrl: z.string(), // Assuming it's a URL
+  imageUrls: z.array(z.string()), // Assuming it's a URL
   location: z.string(),
   town: z.string(),
   brand: z.string(),
@@ -117,7 +117,7 @@ export const toySchema = z.object({
 });
 export const agricultureSchema = z.object({
   title: z.string(),
-  imageUrl: z.string(), // Assuming it's a URL
+  imageUrls: z.array(z.string()), // Assuming it's a URL
   location: z.string(),
   town: z.string(),
   brand: z.string(),
@@ -131,7 +131,7 @@ export const agricultureSchema = z.object({
 });
 export const servicesSchema = z.object({
   title: z.string(),
-  imageUrl: z.string(), // Assuming it's a URL
+  imageUrls: z.array(z.string()), // Assuming it's a URL
   location: z.string(),
   town: z.string(),
   occupation: z.string(),
@@ -144,7 +144,7 @@ export const servicesSchema = z.object({
 
 export const electronicsSchema = z.object({
   title: z.string(),
-  imageUrl: z.string(), // Assuming it's a URL
+  imageUrls: z.array(z.string()), // Assuming it's a URL
   location: z.string(),
   town: z.string(),
   brand: z.string(),
@@ -158,7 +158,7 @@ export const electronicsSchema = z.object({
 });
 export const lightsSchema = z.object({
   title: z.string(),
-  imageUrl: z.string(), // Assuming it's a URL
+ imageUrls: z.array(z.string()), // Assuming it's a URL
   location: z.string(),
   town: z.string(),
   brand: z.string(),
@@ -172,7 +172,7 @@ export const lightsSchema = z.object({
 });
 export const realEstateSchema = z.object({
   title: z.string(),
-  imageUrl: z.string(), // Assuming it's a URL
+  imageUrls: z.array(z.string()), // Assuming it's a URL
   location: z.string(),
   town: z.string(),
   type: z.string(),
