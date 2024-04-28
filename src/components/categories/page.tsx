@@ -9,7 +9,7 @@ const Categories = async () => {
     <div className="mt-4 px-6 font-semibold pb-8">
       <h4 className="font-semibold">Categories</h4>
       <div className="grid grid-cols-2 gap-2">
-        {categories.map((category) => {
+        {categories?.map((category) => {
           return (
             <CategoryCard
               key={category.title}

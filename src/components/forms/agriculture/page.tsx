@@ -12,7 +12,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { createAgriculture, createConstruction } from "@/lib/actions";
+import {
+  createAgriculture,
+  createConstruction,
+  getAuthSeller,
+  getAuthSeller,
+} from "@/lib/actions";
 import { agricultureSchema } from "@/lib/zodSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
@@ -51,6 +56,7 @@ const AgricultureForm = ({ categoryId, subCategoryId }: Props) => {
 
   const handleSubmit = async (values: z.infer<typeof agricultureSchema>) => {
     try {
+      const seller = await getAuthSeller();
       const response = await createAgriculture({
         title: values.title,
         imageUrls: values.imageUrls,
@@ -65,7 +71,7 @@ const AgricultureForm = ({ categoryId, subCategoryId }: Props) => {
         categoryId: categoryId,
         subCategoryId: subCategoryId,
         rating: null,
-        sellerId: "",
+        sellerId: seller.id,
       });
       alert("Successfully uploaded product");
       console.log(

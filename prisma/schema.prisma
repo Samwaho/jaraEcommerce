@@ -72,10 +72,12 @@ model Seller {
   phone         String
   address       String
   county        String
-  country       String
   imageUrl      String
-  whatsppUrl    String
+  whatsappUrl   String
   rating        Int
+  products      Int
+  packageId     String
+  package       Package        @relation(fields: [packageId], references: [id])
   reviews       Review[]
   spareParts    SparePart[]
   mobilePhones  MobilePhones[]
@@ -89,6 +91,15 @@ model Seller {
   vehicles      Vehicles[]
   toys          Toys[]
   agriculture   Agriculture[]
+}
+
+model Package {
+  id      String   @id @default(uuid()) @map("_id")
+  name    String
+  ads     Int
+  days    Int
+  price   String
+  sellers Seller[]
 }
 
 model Review {

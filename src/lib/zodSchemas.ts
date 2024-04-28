@@ -158,7 +158,7 @@ export const electronicsSchema = z.object({
 });
 export const lightsSchema = z.object({
   title: z.string(),
- imageUrls: z.array(z.string()), // Assuming it's a URL
+  imageUrls: z.array(z.string()), // Assuming it's a URL
   location: z.string(),
   town: z.string(),
   brand: z.string(),
@@ -182,4 +182,19 @@ export const realEstateSchema = z.object({
   price: z.string(),
   categoryId: z.string(), // Assuming categoryId is a string representing the ID of the category
   subcategoryId: z.string(), // Assuming subcategoryId is a string representing the ID of the subcategory
+});
+
+export const packageSchema = z.object({
+  name: z.string(),
+  ads: z.number(),
+  days: z.string(),
+  price: z.string(),
+});
+
+export const sellerSchema = z.object({
+  phone: z.string(),
+  address: z.string(),
+  county: z.string(),
+  whatsappUrl: z.string(),
+  packageId: z.string(),
 });

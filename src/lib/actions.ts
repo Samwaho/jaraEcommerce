@@ -15,9 +15,13 @@ import {
   Vehicles,
   subCategories,
   RealEstate,
+  Seller,
+  Package,
 } from "@prisma/client";
 import { db } from "./db";
 import { currentUser } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 export const upsertCategory = async (categoryData: Category) => {
   try {
@@ -154,7 +158,6 @@ export const createService = async (service: Services) => {
 
 export const createElecronic = async (electronic: Electronics) => {
   try {
-    
     const electronicData = await db.electronics.create({
       data: electronic,
     });
@@ -466,5 +469,64 @@ export const getToysById = async (toyId: string) => {
     return toy;
   } catch (error) {
     console.log("🚀 ~ getToysById ~ error:", error);
+  }
+};
+
+export const initSeller = async (sellerData: Seller) => {
+  try {
+    const authSeller = await currentUser();
+
+    // Redirect to sign-in page if user is not authenticated
+    if (!authSeller) {
+      redirect("/sell");
+      return null; // Return null to indicate that redirection is in progress
+    }
+
+    // Create seller with authSeller's information and additional sellerData
+    const seller = await db.seller.create({
+      data: {
+        name: `${authSeller.firstName} ${authSeller.lastName}`,
+        email: authSeller.emailAddresses[0].emailAddress,
+        imageUrl: authSeller.imageUrl,
+        ...sellerData,
+      },
+    });
+
+    return seller; // Return the created seller
+  } catch (error) {
+    console.error("Error initializing seller:", error);
+    throw error; // Rethrow the error for handling at the caller level
+  }
+};
+export const getAuthSeller = async () => {
+  try {
+    const authUser = await currentUser();
+    const seller = await db.seller.findUnique({
+      where: {
+        email: authUser?.emailAddresses[0].emailAddress,
+      },
+    });
+    return seller;
+  } catch (error) {
+    console.log("🚀 ~ getAuthSeller ~ error:", error);
+  }
+};
+
+export const createPackage = async (packageData: Package) => {
+  try {
+    const pack = await db.package.create({
+      data: packageData,
+    });
+    return pack;
+  } catch (error) {
+    console.log("🚀 ~ createPackage ~ error:", error);
+  }
+};
+export const getPackages = async () => {
+  try {
+    const packages = await db.package.findMany();
+    return packages;
+  } catch (error) {
+    console.log("🚀 ~ getPackages ~ error:", error);
   }
 };

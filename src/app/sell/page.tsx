@@ -25,11 +25,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { getCategories, getSubCategories } from "@/lib/actions";
+import { getAuthSeller, getCategories, getSubCategories } from "@/lib/actions";
 import { cn } from "@/lib/utils";
 import { Check, ChevronsUpDown } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import SellerForm from "@/components/forms/seller/page";
 
 const Sell = () => {
   const [open, setOpen] = useState(false);
@@ -39,6 +40,7 @@ const Sell = () => {
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
   const [CategoryName, setCategoryName] = useState("");
+  const [seller, setSeller] = useState(null);
 
   const categoryForms = {
     mobilephones: (
@@ -83,124 +85,141 @@ const Sell = () => {
       console.log("🚀 ~ getSubCategoriesData ~ error:", error);
     }
   };
+
+  const getSeller = async () => {
+    const sellerDetail = await getAuthSeller();
+    if (sellerDetail) {
+      setSeller(sellerDetail);
+    }
+  };
   useEffect(() => {
     getCategoriesData();
+    getSeller();
   }, []);
 
   useEffect(() => {
     getSubCategoriesData();
   }, [value]);
+  console.log(seller);
 
-  return (
-    <div className="min-h-screen py-5 px-10">
-      <div className="flex flex-col gap-4">
-        <h2 className=" uppercase font-semibold">Product Category</h2>
-        <Popover open={open} onOpenChange={setOpen}>
-          <PopoverTrigger asChild>
-            <Button
-              variant="outline"
-              role="combobox"
-              aria-expanded={open}
-              className="justify-between border-slate-400 text-gray-500 w-full"
-            >
-              {value
-                ? categories.find((category) => category.id === value)?.title
-                : "Select category..."}
-              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-[200px] p-0">
-            <Command>
-              <CommandInput placeholder="Search category..." />
-              <CommandEmpty>No category found.</CommandEmpty>
-              <CommandGroup>
-                {categories.map((category) => (
-                  <CommandItem
-                    key={category.id}
-                    value={category.title}
-                    onSelect={(currentValue) => {
-                      setValue(category.id === value ? "" : category.id);
-                      setCategoryName(
-                        category.id === value ? "" : category.title
-                      );
-                      setOpen(false);
-                    }}
-                  >
-                    <div className="flex items-center justify-start gap-4">
-                      <Image
-                        src={category.imageUrl}
-                        alt="image"
-                        width={32}
-                        height={32}
-                        className=""
-                      />
-                      <p className="truncate">{category.title}</p>
-                    </div>
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            </Command>
-          </PopoverContent>
-        </Popover>
+  if (!seller) {
+    return (
+      <div className="min-h-screen py-5 px-10">
+        <SellerForm />
       </div>
-      <div className="flex flex-col gap-4 mt-4">
-        <h2 className=" uppercase font-semibold">Product Sub Category</h2>
-        <Popover open={subOpen} onOpenChange={setSubOpen}>
-          <PopoverTrigger asChild>
-            <Button
-              variant="outline"
-              role="combobox"
-              aria-expanded={open}
-              className="justify-between border-slate-400 text-gray-500 w-full"
-            >
-              {value
-                ? subCategories.find(
-                    (subCategory) => subCategory.id === subValue
-                  )?.title
-                : "Select subcategory..."}
-              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-[200px] p-0">
-            <Command>
-              <CommandInput placeholder="Search subcategory..." />
-              <CommandEmpty>No subcategory found.</CommandEmpty>
-              <CommandGroup>
-                {subCategories.map((subCategory) => (
-                  <CommandItem
-                    key={subCategory.id}
-                    value={subCategory.title}
-                    onSelect={(currentValue) => {
-                      setSubValue(
-                        subCategory.id === subValue ? "" : subCategory.id
-                      );
-                      setOpen(false);
-                    }}
-                  >
-                    <div className="flex items-center justify-start gap-4">
-                      <Image
-                        src={subCategory.imageUrl}
-                        alt="image"
-                        width={32}
-                        height={32}
-                        className=""
-                      />
-                      <p className="truncate">{subCategory.title}</p>
-                    </div>
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            </Command>
-          </PopoverContent>
-        </Popover>
-      </div>
-      {categoryForms[CategoryName.toLowerCase().replace(/\s+/g, "")] || (
-        <div>
-          <p>{categoryForms["mobilephones"]}</p>
+    );
+  } else {
+    return (
+      <div className="min-h-screen py-5 px-10">
+        <div className="flex flex-col gap-4">
+          <h2 className=" uppercase font-semibold">Product Category</h2>
+          <Popover open={open} onOpenChange={setOpen}>
+            <PopoverTrigger asChild>
+              <Button
+                variant="outline"
+                role="combobox"
+                aria-expanded={open}
+                className="justify-between border-slate-400 text-gray-500 w-full"
+              >
+                {value
+                  ? categories.find((category) => category.id === value)?.title
+                  : "Select category..."}
+                <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-[200px] p-0">
+              <Command>
+                <CommandInput placeholder="Search category..." />
+                <CommandEmpty>No category found.</CommandEmpty>
+                <CommandGroup>
+                  {categories.map((category) => (
+                    <CommandItem
+                      key={category.id}
+                      value={category.title}
+                      onSelect={(currentValue) => {
+                        setValue(category.id === value ? "" : category.id);
+                        setCategoryName(
+                          category.id === value ? "" : category.title
+                        );
+                        setOpen(false);
+                      }}
+                    >
+                      <div className="flex items-center justify-start gap-4">
+                        <Image
+                          src={category.imageUrl}
+                          alt="image"
+                          width={32}
+                          height={32}
+                          className=""
+                        />
+                        <p className="truncate">{category.title}</p>
+                      </div>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </Command>
+            </PopoverContent>
+          </Popover>
         </div>
-      )}
-    </div>
-  );
+        <div className="flex flex-col gap-4 mt-4">
+          <h2 className=" uppercase font-semibold">Product Sub Category</h2>
+          <Popover open={subOpen} onOpenChange={setSubOpen}>
+            <PopoverTrigger asChild>
+              <Button
+                variant="outline"
+                role="combobox"
+                aria-expanded={open}
+                className="justify-between border-slate-400 text-gray-500 w-full"
+              >
+                {value
+                  ? subCategories.find(
+                      (subCategory) => subCategory.id === subValue
+                    )?.title
+                  : "Select subcategory..."}
+                <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-[200px] p-0">
+              <Command>
+                <CommandInput placeholder="Search subcategory..." />
+                <CommandEmpty>No subcategory found.</CommandEmpty>
+                <CommandGroup>
+                  {subCategories.map((subCategory) => (
+                    <CommandItem
+                      key={subCategory.id}
+                      value={subCategory.title}
+                      onSelect={(currentValue) => {
+                        setSubValue(
+                          subCategory.id === subValue ? "" : subCategory.id
+                        );
+                        setOpen(false);
+                      }}
+                    >
+                      <div className="flex items-center justify-start gap-4">
+                        <Image
+                          src={subCategory.imageUrl}
+                          alt="image"
+                          width={32}
+                          height={32}
+                          className=""
+                        />
+                        <p className="truncate">{subCategory.title}</p>
+                      </div>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </Command>
+            </PopoverContent>
+          </Popover>
+        </div>
+        {categoryForms[CategoryName.toLowerCase().replace(/\s+/g, "")] || (
+          <div>
+            <p>{categoryForms["mobilephones"]}</p>
+          </div>
+        )}
+      </div>
+    );
+  }
 };
 
 export default Sell;
