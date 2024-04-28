@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { createRealEstate } from "@/lib/actions";
+import { createRealEstate, getAuthSeller } from "@/lib/actions";
 import { realEstateSchema } from "@/lib/zodSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
@@ -20,6 +20,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { FaUpload } from "react-icons/fa";
 import { toast } from "sonner";
+import { v4 } from "uuid";
 import { z } from "zod";
 
 type Props = {
@@ -49,7 +50,9 @@ const RealEstateForm = ({ categoryId, subCategoryId }: Props) => {
 
   const handleSubmit = async (values: z.infer<typeof realEstateSchema>) => {
     try {
+      const seller = await getAuthSeller();
       const response = await createRealEstate({
+        id: v4(),
         title: values.title,
         imageUrls: values.imageUrls,
         location: values.location,
@@ -62,7 +65,7 @@ const RealEstateForm = ({ categoryId, subCategoryId }: Props) => {
         categoryId: categoryId,
         subCategoryId: subCategoryId,
         rating: null,
-        sellerId: "",
+        sellerId: seller?.id || "",
       });
       toast("Product has been created", {
         description: "successfully saved",

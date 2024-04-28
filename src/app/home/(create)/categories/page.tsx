@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import Loading from "@/components/shared/Loading";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { v4 } from "uuid";
 
 const Categories = () => {
   const form = useForm<z.infer<typeof categorySchema>>({
@@ -25,7 +26,7 @@ const Categories = () => {
     resolver: zodResolver(categorySchema),
     defaultValues: {
       title: "",
-      imageUrl: "",
+      imageUrls: [],
     },
   });
 
@@ -34,8 +35,9 @@ const Categories = () => {
   const handleSubmit = async (values: z.infer<typeof categorySchema>) => {
     try {
       const response = await createCategory({
+        id: v4(),
         title: values.title,
-        imageUrl: values.imageUrl,
+        imageUrl: values.imageUrls[0],
       });
       router.push("/home");
       console.log(
@@ -53,7 +55,7 @@ const Categories = () => {
           <FormField
             disabled={isLoading}
             control={form.control}
-            name="imageUrl"
+            name="imageUrls"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="mt-4">Category Image</FormLabel>

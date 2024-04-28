@@ -31,14 +31,15 @@ import { Check, ChevronsUpDown } from "lucide-react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import SellerForm from "@/components/forms/seller/page";
+import { Category, subCategories } from "@prisma/client";
 
 const Sell = () => {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState(false);
   const [value, setValue] = useState("");
   const [subValue, setSubValue] = useState("");
-  const [categories, setCategories] = useState([]);
-  const [subCategories, setSubCategories] = useState([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [subCategories, setSubCategories] = useState<subCategories[]>([]);
   const [CategoryName, setCategoryName] = useState("");
   const [seller, setSeller] = useState(null);
 
@@ -52,7 +53,9 @@ const Sell = () => {
       <ConstructionForm categoryId={value} subCategoryId={subValue} />
     ),
     furniture: <FurnitureForm categoryId={value} subCategoryId={subValue} />,
-    vehicles: <VehicleForm categoryId={value} subCategoryId={subValue} />,
+    "cars&vehicles": (
+      <VehicleForm categoryId={value} subCategoryId={subValue} />
+    ),
     agriculture: (
       <AgricultureForm categoryId={value} subCategoryId={subValue} />
     ),
@@ -70,7 +73,7 @@ const Sell = () => {
   const getCategoriesData = async () => {
     try {
       const categoriesData = await getCategories();
-      setCategories(categoriesData);
+      if (categoriesData) setCategories(categoriesData);
     } catch (error) {
       console.log("🚀 ~ getCategoriesData ~ error:", error);
     }
@@ -79,7 +82,8 @@ const Sell = () => {
   const getSubCategoriesData = async () => {
     try {
       const subCategoriesData = await getSubCategories(value);
-      setSubCategories(subCategoriesData);
+      if (subCategoriesData) setSubCategories(subCategoriesData);
+
       console.log(subCategoriesData);
     } catch (error) {
       console.log("🚀 ~ getSubCategoriesData ~ error:", error);
@@ -88,9 +92,7 @@ const Sell = () => {
 
   const getSeller = async () => {
     const sellerDetail = await getAuthSeller();
-    if (sellerDetail) {
-      setSeller(sellerDetail);
-    }
+    if (sellerDetail) setSeller(sellerDetail);
   };
   useEffect(() => {
     getCategoriesData();

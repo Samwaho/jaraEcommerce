@@ -3,12 +3,12 @@ import { z } from "zod";
 
 export const categorySchema = z.object({
   title: z.string(),
-  imageUrl: z.string(),
+  imageUrls: z.array(z.string()),
 });
 
 export const subCategorySchema = z.object({
   title: z.string(),
-  imageUrl: z.string(),
+  imageUrls: z.array(z.string()),
   categoryId: z.string(),
 });
 
@@ -186,7 +186,7 @@ export const realEstateSchema = z.object({
 
 export const packageSchema = z.object({
   name: z.string(),
-  ads: z.number(),
+  ads: z.string(),
   days: z.string(),
   price: z.string(),
 });

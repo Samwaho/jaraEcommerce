@@ -96,8 +96,8 @@ model Seller {
 model Package {
   id      String   @id @default(uuid()) @map("_id")
   name    String
-  ads     Int
-  days    Int
+  ads     String
+  days    String
   price   String
   sellers Seller[]
 }

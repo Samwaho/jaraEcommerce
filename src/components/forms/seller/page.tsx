@@ -1,6 +1,5 @@
 "use client";
 
-import FileUpload from "@/components/shared/FileUpload";
 import Loading from "@/components/shared/Loading";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,17 +10,15 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { initSeller } from "@/lib/actions";
 import { sellerSchema } from "@/lib/zodSchemas";
-import { currentUser } from "@clerk/nextjs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FaUpload } from "react-icons/fa";
-import { toast } from "sonner";
+import { v4 } from "uuid";
 import { z } from "zod";
 
 const SellerForm = () => {
@@ -43,6 +40,7 @@ const SellerForm = () => {
   const handleSubmit = async (values: z.infer<typeof sellerSchema>) => {
     try {
       const response = await initSeller({
+        id: v4(),
         phone: values.phone,
         address: values.address,
         county: values.county,
@@ -56,7 +54,7 @@ const SellerForm = () => {
         "🚀 ~ handleSubmit ~ Successfully saved the Seller deatils:",
         response
       );
-      return router.push("/sell");
+      router.push("/sell");
     } catch (error) {
       console.log("🚀 ~ handleSubmit ~ error:", error);
     }

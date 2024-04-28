@@ -16,6 +16,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import {
@@ -33,6 +34,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { v4 } from "uuid";
 import { z } from "zod";
 
 type Props = {
@@ -45,18 +47,18 @@ const Page = ({ data }: Props) => {
     resolver: zodResolver(subCategorySchema),
     defaultValues: {
       title: "",
-      imageUrl: "",
+      imageUrls: [],
       categoryId: "",
     },
   });
 
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const router = useRouter();
   const isLoading = form.formState.isSubmitting;
   const getCategoryData = async () => {
     try {
       const categoryData = await getCategories();
-      setCategories(categoryData);
+      if (categoryData) setCategories(categoryData);
       console.log(categories);
     } catch (error) {
       console.log("🚀 ~ getCategoryData ~ error:", error);
@@ -66,8 +68,9 @@ const Page = ({ data }: Props) => {
   const handleSubmit = async (values: z.infer<typeof subCategorySchema>) => {
     try {
       const response = await createSubCategory({
+        id: v4(),
         title: values.title,
-        imageUrl: values.imageUrl,
+        imageUrl: values.imageUrls[0],
         categoryId: values.categoryId,
       });
       console.log(
@@ -90,7 +93,7 @@ const Page = ({ data }: Props) => {
           <FormField
             disabled={isLoading}
             control={form.control}
-            name="imageUrl"
+            name="imageUrls"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="mt-4">SubCategory Image</FormLabel>
@@ -101,6 +104,7 @@ const Page = ({ data }: Props) => {
                     value={field.value}
                   />
                 </FormControl>
+                <FormMessage />
               </FormItem>
             )}
           />

@@ -1,6 +1,5 @@
 "use client";
 
-import FileUpload from "@/components/shared/FileUpload";
 import Loading from "@/components/shared/Loading";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,19 +8,18 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { creatPackage } from "@/lib/actions";
+import { createPackage } from "@/lib/actions";
 import { packageSchema } from "@/lib/zodSchemas";
-import { currentUser } from "@clerk/nextjs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FaUpload } from "react-icons/fa";
-import { toast } from "sonner";
+import { v4 } from "uuid";
 import { z } from "zod";
 
 const PackageForm = () => {
@@ -29,10 +27,10 @@ const PackageForm = () => {
     mode: "onChange",
     resolver: zodResolver(packageSchema),
     defaultValues: {
+      name: "",
+      days: "",
       ads: "",
-      county: "",
-      whatsappUrl: "",
-      packageId: "",
+      price: "",
     },
   });
 
@@ -41,14 +39,12 @@ const PackageForm = () => {
 
   const handleSubmit = async (values: z.infer<typeof packageSchema>) => {
     try {
-      const response = await creatPackage({
-        phone: values.phone,
-        address: values.address,
-        county: values.county,
-        whatsappUrl: values.whatsappUrl,
-        rating: 0,
-        products: 0,
-        packageId: values.packageId,
+      const response = await createPackage({
+        id: v4(),
+        name: values.name,
+        ads: values.ads,
+        days: values.days,
+        price: values.price,
       });
       alert("Successfully saved info");
       console.log(
@@ -68,51 +64,54 @@ const PackageForm = () => {
             <FormField
               disabled={isLoading}
               control={form.control}
-              name="phone"
+              name="name"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel>Phone No.</FormLabel>
+                  <FormLabel>Package Name</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Your phone number"
+                      placeholder="Package name"
                       className="shadow-sm bg-transparent dark:bg-secondary-dark-bg border-slate-400"
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
             <FormField
               disabled={isLoading}
               control={form.control}
-              name="county"
+              name="days"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel>County</FormLabel>
+                  <FormLabel>Days</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Your county"
+                      placeholder="Your days"
                       className="shadow-sm bg-transparent dark:bg-secondary-dark-bg border-slate-400"
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
             <FormField
               disabled={isLoading}
               control={form.control}
-              name="address"
+              name="ads"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel>Address</FormLabel>
+                  <FormLabel>Ads</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Your address"
+                      placeholder="Your ads"
                       className="shadow-sm bg-transparent dark:bg-secondary-dark-bg border-slate-400"
                       {...field}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -120,34 +119,18 @@ const PackageForm = () => {
             <FormField
               disabled={isLoading}
               control={form.control}
-              name="whatsappUrl"
+              name="price"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel>Whatsapp No.</FormLabel>
+                  <FormLabel>Price</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Your whatsapp number"
+                      placeholder="Your price"
                       className="shadow-sm bg-transparent dark:bg-secondary-dark-bg border-slate-400"
                       {...field}
                     />
                   </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              disabled={isLoading}
-              control={form.control}
-              name="packageId"
-              render={({ field }) => (
-                <FormItem className="flex-1">
-                  <FormLabel>Package</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Choose a package"
-                      className="shadow-sm bg-transparent dark:bg-secondary-dark-bg border-slate-400"
-                      {...field}
-                    />
-                  </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />

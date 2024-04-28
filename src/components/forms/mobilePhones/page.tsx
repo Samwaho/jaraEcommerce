@@ -13,7 +13,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverTrigger } from "@/components/ui/popover";
 import { Textarea } from "@/components/ui/textarea";
-import { createMobilePhone, createSparePart } from "@/lib/actions";
+import {
+  createMobilePhone,
+  createSparePart,
+  getAuthSeller,
+} from "@/lib/actions";
 import { cn } from "@/lib/utils";
 import { mobilePhonesSchema } from "@/lib/zodSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,6 +27,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { FaUpload } from "react-icons/fa";
 import { toast } from "sonner";
+import { v4 } from "uuid";
 import { z } from "zod";
 
 type Props = {
@@ -55,7 +60,9 @@ const MobilePhoneForm = ({ categoryId, subCategoryId }: Props) => {
 
   const handleSubmit = async (values: z.infer<typeof mobilePhonesSchema>) => {
     try {
+      const seller = await getAuthSeller();
       const response = await createMobilePhone({
+        id: v4(),
         title: values.title,
         imageUrls: values.imageUrls,
         location: values.location,
@@ -71,7 +78,7 @@ const MobilePhoneForm = ({ categoryId, subCategoryId }: Props) => {
         categoryId: categoryId,
         subCategoryId: subCategoryId,
         rating: null,
-        sellerId: "",
+        sellerId: seller?.id || "",
       });
       alert("Successfully uploaded product");
       console.log(

@@ -17,6 +17,7 @@ import {
   createFashion,
   createMobilePhone,
   createSparePart,
+  getAuthSeller,
 } from "@/lib/actions";
 import { cn } from "@/lib/utils";
 import { fashionSchema } from "@/lib/zodSchemas";
@@ -26,6 +27,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { FaUpload } from "react-icons/fa";
 import { toast } from "sonner";
+import { v4 } from "uuid";
 import { z } from "zod";
 
 type Props = {
@@ -56,7 +58,9 @@ const FashionForm = ({ categoryId, subCategoryId }: Props) => {
 
   const handleSubmit = async (values: z.infer<typeof fashionSchema>) => {
     try {
+      const seller = await getAuthSeller();
       const response = await createFashion({
+        id: v4(),
         title: values.title,
         imageUrls: values.imageUrls,
         location: values.location,
@@ -70,7 +74,7 @@ const FashionForm = ({ categoryId, subCategoryId }: Props) => {
         categoryId: categoryId,
         subCategoryId: subCategoryId,
         rating: null,
-        sellerId: "",
+        sellerId: seller?.id || "",
       });
       alert("Successfully uploaded product");
       console.log(

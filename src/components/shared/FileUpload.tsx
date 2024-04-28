@@ -1,5 +1,4 @@
 import { FileIcon, X } from "lucide-react";
-import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
 import { UploadDropzone } from "@/lib/uploadthing";
@@ -30,28 +29,41 @@ const FileUpload = ({ apiEndpoint, onChange, value }: Props) => {
       <div className="flex flex-col justify-center p-2 items-center border border-dashed border-gray-300 rounded-md">
         {type !== "pdf" ? (
           <div className="relative w-60 ">
-            <Carousel
-              opts={{
-                loop: true,
-              }}
-              plugins={[
-                Autoplay({
-                  delay: 3000,
-                }),
-              ]}
-            >
-              <CarouselContent>
-                {value.map((image, index) => (
-                  <CarouselItem key={index}>
-                    <div className="">
-                      <img src={image} alt="image" />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
-            </Carousel>
+            {apiEndpoint === "media" ? (
+              <Carousel
+                opts={{
+                  loop: true,
+                }}
+                plugins={[
+                  Autoplay({
+                    delay: 3000,
+                  }),
+                ]}
+              >
+                <CarouselContent>
+                  {value.map((image, index) => (
+                    <CarouselItem key={index}>
+                      <img
+                        src={image}
+                        alt="image"
+                        className="w-[300px] h-[300px] object-cover"
+                      />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+            ) : (
+              <div className="">
+                {" "}
+                <img
+                  src={value[0]}
+                  alt="image"
+                  className="w-[300px] h-[300px] object-cover"
+                />
+              </div>
+            )}
           </div>
         ) : (
           <div className="relative flex items-center p-2 mt-2 rounded-md">

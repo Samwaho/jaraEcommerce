@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { createElecronic } from "@/lib/actions";
+import { createElecronic, getAuthSeller } from "@/lib/actions";
 import { electronicsSchema } from "@/lib/zodSchemas";
 import { currentUser } from "@clerk/nextjs";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -22,6 +22,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { FaUpload } from "react-icons/fa";
 import { toast } from "sonner";
+import { v4 } from "uuid";
 import { z } from "zod";
 
 type Props = {
@@ -53,13 +54,9 @@ const ElectronicsForm = ({ categoryId, subCategoryId }: Props) => {
 
   const handleSubmit = async (values: z.infer<typeof electronicsSchema>) => {
     try {
-      try {
-        const seller = await currentUser();
-        if (!seller) return router.push("/sign-in");
-      } catch (error) {
-        console.log("🚀 ~ createElecronic ~ error:", error);
-      }
+      const seller = await getAuthSeller();
       const response = await createElecronic({
+        id: v4(),
         title: values.title,
         imageUrls: values.imageUrls,
         location: values.location,
@@ -73,7 +70,7 @@ const ElectronicsForm = ({ categoryId, subCategoryId }: Props) => {
         categoryId: categoryId,
         subCategoryId: subCategoryId,
         rating: null,
-        sellerId: "",
+        sellerId: seller?.id || "",
       });
       alert("Successfully uploaded product");
       console.log(

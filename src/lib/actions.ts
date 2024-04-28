@@ -472,7 +472,7 @@ export const getToysById = async (toyId: string) => {
   }
 };
 
-export const initSeller = async (sellerData: Seller) => {
+export const initSeller = async (sellerData: Partial<Seller>) => {
   try {
     const authSeller = await currentUser();
 
@@ -509,6 +509,19 @@ export const getAuthSeller = async () => {
     return seller;
   } catch (error) {
     console.log("🚀 ~ getAuthSeller ~ error:", error);
+  }
+};
+
+export const getSellerById = async (sellerId: string) => {
+  try {
+    const seller = await db.seller.findUnique({
+      where: {
+        id: sellerId,
+      },
+    });
+    return seller;
+  } catch (error) {
+    console.log("🚀 ~ getSellerById ~ error:", error);
   }
 };
 

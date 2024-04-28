@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { createService } from "@/lib/actions";
+import { createService, getAuthSeller } from "@/lib/actions";
 import { servicesSchema } from "@/lib/zodSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
@@ -20,6 +20,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { FaUpload } from "react-icons/fa";
 import { toast } from "sonner";
+import { v4 } from "uuid";
 import { z } from "zod";
 
 type Props = {
@@ -48,7 +49,9 @@ const ServicesForm = ({ categoryId, subCategoryId }: Props) => {
 
   const handleSubmit = async (values: z.infer<typeof servicesSchema>) => {
     try {
+      const seller = await getAuthSeller();
       const response = await createService({
+        id: v4(),
         title: values.title,
         imageUrls: values.imageUrls,
         location: values.location,
@@ -60,7 +63,7 @@ const ServicesForm = ({ categoryId, subCategoryId }: Props) => {
         categoryId: categoryId,
         subCategoryId: subCategoryId,
         rating: null,
-        sellerId: "",
+        sellerId: seller?.id || "",
       });
       toast("Product has been created", {
         description: "successfully saved",
