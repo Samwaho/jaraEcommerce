@@ -198,3 +198,7 @@ export const sellerSchema = z.object({
   whatsappUrl: z.string(),
   packageId: z.string(),
 });
+
+export const reviewSchema = z.object({
+  review: z.string(),
+});

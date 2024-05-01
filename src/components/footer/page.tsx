@@ -1,41 +1,43 @@
+import { SignedIn, UserButton } from "@clerk/nextjs";
+import { BookText, Home, Plus, TicketPlus } from "lucide-react";
+import Link from "next/link";
 import React from "react";
+import { BsCart4 } from "react-icons/bs";
 import { FaTiktok, FaYoutube } from "react-icons/fa";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { RiInstagramFill } from "react-icons/ri";
+import Categories from "./categories/page";
 
 const Footer = () => {
   return (
-    <div className="bg-primary text-main-text p-4">
-      <div className="flex justify-between">
-        <div className=" text-sm">
-          <p>About Us</p>
-          <p>Home</p>
-          <p>Sell on Jara</p>
-          <p className="mt-6 underline">Privacy Policy</p>
-          <p className="underline">Terms & Conditions</p>
+    <div className="text-main-text bg-gradient-to-tr from-sky-400 to-sky-700 fixed bottom-0 w-full flex items-center justify-around">
+      <Link href="/home">
+        <div className="flex flex-col items-center  p-2 cursor-pointer rounded-full shadow-sm text-sm">
+          <Home className="w-5 h-5" />
+          <h4>Home</h4>
         </div>
-        <div className="flex flex-col gap-3">
-          <p className="font-semibold">Contact us for more info</p>
-          <div className="flex items-center gap-4">
-            <MdEmail className="text-xl" />
-            <p>info@jara.co.ke</p>
-          </div>
-          <div className="flex items-center gap-4">
-            <FaPhoneVolume className="text-xl" />
-            <p>+254 724 653 574</p>
-          </div>
-          <div className="flex items-center gap-4 text-xl">
-            <RiInstagramFill />
-            <FaTiktok />
-            <FaYoutube />
-          </div>
+      </Link>
+      <Categories />
+      <Link href="/sign-in">
+        <div className="flex flex-col items-center  p-2 cursor-pointer rounded-full shadow-sm text-sm">
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
         </div>
-      </div>
-      <p className="text-center text-sm mt-8 font-semibold">
-        &copy; JARA.CO.KE
-      </p>
-      <p className="text-center text-sm">All rights reserved.</p>
+      </Link>
+      <Link href="/sell">
+        <div className="flex flex-col items-center  p-2 cursor-pointer rounded-full shadow-sm text-sm">
+          <TicketPlus className="w-5 h-5" />
+          <h4>Sell</h4>
+        </div>
+      </Link>
+      <Link href="/home">
+        <div className="flex flex-col items-center  p-2 cursor-pointer rounded-full shadow-sm text-sm">
+          <BsCart4 className="w-5 h-5" />
+          <h4>Orders</h4>
+        </div>
+      </Link>
     </div>
   );
 };

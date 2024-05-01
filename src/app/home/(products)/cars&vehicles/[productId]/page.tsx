@@ -108,7 +108,7 @@ const Page = async ({ params }: { params: { productId: string } }) => {
       </div>
       <SellerDetails sellerId={vehicle?.sellerId || ""} />
       <RateSeller />
-      <RateSellerService />
+      <RateSellerService sellerId={vehicle?.sellerId || ""} />
       <Comments />
     </div>
   );

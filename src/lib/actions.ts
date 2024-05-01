@@ -17,6 +17,7 @@ import {
   RealEstate,
   Seller,
   Package,
+  Review,
 } from "@prisma/client";
 import { db } from "./db";
 import { currentUser } from "@clerk/nextjs";
@@ -535,11 +536,23 @@ export const createPackage = async (packageData: Package) => {
     console.log("🚀 ~ createPackage ~ error:", error);
   }
 };
+
 export const getPackages = async () => {
   try {
     const packages = await db.package.findMany();
     return packages;
   } catch (error) {
     console.log("🚀 ~ getPackages ~ error:", error);
+  }
+};
+
+export const createReview = async (reviewData: Review) => {
+  try {
+    const review = await db.review.create({
+      data: reviewData,
+    });
+    return review;
+  } catch (error) {
+    console.log("🚀 ~ createReview ~ error:", error);
   }
 };

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 
 const Rating = () => {
-  const [rating, setRating] = useState(1);
+  const [rating, setRating] = useState(0);
 
   const handleRating = (value: number) => {
     setRating(value);

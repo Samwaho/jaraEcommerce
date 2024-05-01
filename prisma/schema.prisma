@@ -103,13 +103,10 @@ model Package {
 }
 
 model Review {
-  id        String   @id @default(uuid()) @map("_id")
-  review    String
-  rating    Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  sellerId  String
-  seller    Seller   @relation(fields: [sellerId], references: [id])
+  id       String @id @default(uuid()) @map("_id")
+  review   String
+  sellerId String
+  seller   Seller @relation(fields: [sellerId], references: [id])
 }
 
 model SparePart {
