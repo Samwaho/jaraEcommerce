@@ -8,10 +8,10 @@ import { FaTiktok, FaYoutube } from "react-icons/fa";
 
 const Header = () => {
   return (
-    <div className="bg-gradient-to-tr from-sky-400 to-sky-700 text-main-text flex items-center justify-around py-1 px-4">
+    <div className="bg-gradient-to-tr from-sky-400 to-sky-700 text-main-text flex items-center justify-between py-1 px-4">
       <div className="flex items-center">
         <Image src="/jara logo.svg" alt="logo" width={50} height={50} />
-        <h4 className="font-bold text-xl">Jara.co.ke</h4>
+        <h4 className="font-bold text-xl">Jara Marketing</h4>
       </div>
       <div className="flex items-center gap-3">
         <Link href="">
