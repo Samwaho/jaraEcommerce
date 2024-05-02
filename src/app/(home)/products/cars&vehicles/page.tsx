@@ -21,7 +21,10 @@ const Page = async () => {
       <MasonryGrid>
         {products?.map((product) => {
           return (
-            <Link key={product.id} href={`/cars&vehicles/${product.id}`}>
+            <Link
+              key={product.id}
+              href={`/products/cars&vehicles/${product.id}`}
+            >
               <div className="p-3 mt-2 flex flex-col gap-2 rounded-xl shadow-md bg-white">
                 <Image
                   src={product.imageUrls[0]}

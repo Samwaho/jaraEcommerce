@@ -15,7 +15,9 @@ const Categories = async () => {
               key={category.title}
               title={category.title}
               image={category.imageUrl}
-              link={`/${category.title.toLowerCase().replace(/\s+/g, "")}`}
+              link={`/products/${category.title
+                .toLowerCase()
+                .replace(/\s+/g, "")}`}
             />
           );
         })}

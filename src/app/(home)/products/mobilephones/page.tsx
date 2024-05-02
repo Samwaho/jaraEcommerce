@@ -1,18 +1,18 @@
 import MasonryGrid from "@/components/shared/MasonryGrid";
 import ProductCard from "@/components/shared/productCard";
 import { Button } from "@/components/ui/button";
-import { getSparesProducts } from "@/lib/actions";
+import { getMobilePhonesProducts } from "@/lib/actions";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Page = async () => {
-  const products = await getSparesProducts();
+  const products = await getMobilePhonesProducts();
   return (
     <div className="min-h-screen bg-main-bg pb-14">
       <div className="bg-white pt-2">
         <Image
-          src="/Spares-8.png"
+          src="/Mobile-8.png"
           alt="Banner Component"
           width={1400}
           height={1400}
@@ -23,7 +23,10 @@ const Page = async () => {
         <MasonryGrid>
           {products?.map((product) => {
             return (
-              <Link key={product.id} href={`/spareparts/${product.id}`}>
+              <Link
+                key={product.id}
+                href={`/products/mobilephones/${product.id}`}
+              >
                 <div className="p-3 mt-2 flex flex-col gap-2 rounded-xl shadow-md bg-white">
                   <Image
                     src={product.imageUrls[0]}
@@ -42,12 +45,12 @@ const Page = async () => {
                       <p className="text-sm truncate">{product.brand}</p>
                     </div>
                     <div className="flex items-center justify-between gap-6">
-                      <h3 className="font-semibold text-sm">Model:</h3>
-                      <p className="text-sm truncate">{product.model}</p>
+                      <h3 className="font-semibold text-sm">RAM:</h3>
+                      <p className="text-sm truncate">{product.ram}</p>
                     </div>
                     <div className="flex items-center justify-between gap-6">
-                      <h3 className="font-semibold text-sm">Y.O.M:</h3>
-                      <p className="text-sm truncate">{product.partNumber}</p>
+                      <h3 className="font-semibold text-sm">Storage:</h3>
+                      <p className="text-sm truncate">{product.storage}</p>
                     </div>
                     <div className="flex items-center justify-between gap-6">
                       <h3 className="font-semibold text-sm">Location:</h3>

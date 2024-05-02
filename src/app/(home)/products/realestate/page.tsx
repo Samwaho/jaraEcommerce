@@ -1,18 +1,18 @@
 import MasonryGrid from "@/components/shared/MasonryGrid";
 import ProductCard from "@/components/shared/productCard";
 import { Button } from "@/components/ui/button";
-import { getCostructionProducts } from "@/lib/actions";
+import { getRealEstateProducts } from "@/lib/actions";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Page = async () => {
-  const products = await getCostructionProducts();
+  const products = await getRealEstateProducts();
   return (
     <div className="min-h-screen bg-main-bg pb-14">
       <div className="bg-white pt-2">
         <Image
-          src="/Constraction-8.png"
+          src="/Real estate-8.png"
           alt="Banner Component"
           width={1400}
           height={1400}
@@ -23,7 +23,10 @@ const Page = async () => {
         <MasonryGrid>
           {products?.map((product) => {
             return (
-              <Link key={product.id} href={`/construction/${product.id}`}>
+              <Link
+                key={product.id}
+                href={`/products/realestate/${product.id}`}
+              >
                 <div className="p-3 mt-2 flex flex-col gap-2 rounded-xl shadow-md bg-white">
                   <Image
                     src={product.imageUrls[0]}
@@ -33,23 +36,19 @@ const Page = async () => {
                   />
                   <h2 className="font-semibold">{`Ksh ${product.price}`}</h2>
                   <div className="flex flex-col gap-1">
-                    <div className="flex items-center justify-between gap-6">
+                    <div className="flex items-center gap-10 justify-between">
                       <h3 className="font-semibold text-sm">Title:</h3>
                       <p className="text-sm truncate">{product.title}</p>
                     </div>
-                    <div className="flex items-center justify-between gap-6">
-                      <h3 className="font-semibold text-sm">Brand:</h3>
-                      <p className="text-sm truncate">{product.brand}</p>
+                    <div className="flex items-center gap-10 justify-between">
+                      <h3 className="font-semibold text-sm">Size:</h3>
+                      <p className="text-sm truncate">{product.size}</p>
                     </div>
-                    <div className="flex items-center justify-between gap-6">
-                      <h3 className="font-semibold text-sm">Model:</h3>
-                      <p className="text-sm truncate">{product.types}</p>
-                    </div>
-                    <div className="flex items-center justify-between gap-6">
+                    <div className="flex items-center gap-10 justify-between">
                       <h3 className="font-semibold text-sm">Type:</h3>
-                      <p className="text-sm truncate">{product.types}</p>
+                      <p className="text-sm truncate">{product.type}</p>
                     </div>
-                    <div className="flex items-center justify-between gap-6">
+                    <div className="flex items-center gap-10 justify-between">
                       <h3 className="font-semibold text-sm">Location:</h3>
                       <p className="text-sm truncate">{product.location}</p>
                     </div>

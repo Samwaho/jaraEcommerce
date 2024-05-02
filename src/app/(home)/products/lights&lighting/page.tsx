@@ -1,18 +1,18 @@
 import MasonryGrid from "@/components/shared/MasonryGrid";
 import ProductCard from "@/components/shared/productCard";
 import { Button } from "@/components/ui/button";
-import { getFurnitureProducts } from "@/lib/actions";
+import { getLightsProducts } from "@/lib/actions";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Page = async () => {
-  const products = await getFurnitureProducts();
+  const products = await getLightsProducts();
   return (
     <div className="min-h-screen bg-main-bg pb-14">
       <div className="bg-white pt-2">
         <Image
-          src="/furniture-8.png"
+          src="/Light-8.png"
           alt="Banner Component"
           width={1400}
           height={1400}
@@ -23,7 +23,10 @@ const Page = async () => {
         <MasonryGrid>
           {products?.map((product) => {
             return (
-              <Link key={product.id} href={`/home&furniture/${product.id}`}>
+              <Link
+                key={product.id}
+                href={`/products/lights&lighting/${product.id}`}
+              >
                 <div className="p-3 mt-2 flex flex-col gap-2 rounded-xl shadow-md bg-white">
                   <Image
                     src={product.imageUrls[0]}
@@ -42,8 +45,12 @@ const Page = async () => {
                       <p className="text-sm truncate">{product.brand}</p>
                     </div>
                     <div className="flex items-center justify-between gap-6">
+                      <h3 className="font-semibold text-sm">Model:</h3>
+                      <p className="text-sm truncate">{product.model}</p>
+                    </div>
+                    <div className="flex items-center justify-between gap-6">
                       <h3 className="font-semibold text-sm">Type:</h3>
-                      <p className="text-sm truncate">{product.types}</p>
+                      <p className="text-sm truncate">{product.type}</p>
                     </div>
                     <div className="flex items-center justify-between gap-6">
                       <h3 className="font-semibold text-sm">Location:</h3>
