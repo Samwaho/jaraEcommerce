@@ -10,7 +10,7 @@ import Categories from "./categories/page";
 const Footer = () => {
   return (
     <div className="text-main-text bg-gradient-to-tr from-sky-400 to-sky-700 fixed bottom-0 w-full flex items-center justify-around">
-      <Link href="/home">
+      <Link href="/">
         <div className="flex flex-col items-center  p-2 cursor-pointer text-sm">
           <Home className="w-5 h-5" />
           <h4>Home</h4>

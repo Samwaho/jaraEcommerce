@@ -58,9 +58,7 @@ const Categories = () => {
                 }}
               >
                 <Link
-                  href={`/home/${category.title
-                    .toLowerCase()
-                    .replace(/\s+/g, "")}`}
+                  href={`/${category.title.toLowerCase().replace(/\s+/g, "")}`}
                 >
                   <div className="flex items-center justify-start gap-4">
                     <Image
