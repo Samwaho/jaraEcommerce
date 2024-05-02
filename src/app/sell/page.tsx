@@ -112,7 +112,7 @@ const Sell = () => {
     );
   } else {
     return (
-      <div className="min-h-screen py-5 px-10 mb-12">
+      <div className="min-h-screen bg-m py-5 px-10 mb-12">
         <div className="flex flex-col gap-4">
           <h2 className=" uppercase font-semibold">Product Category</h2>
           <Popover open={open} onOpenChange={setOpen}>

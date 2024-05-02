@@ -17,6 +17,19 @@ const Footer = () => {
         </div>
       </Link>
       <Categories />
+
+      <Link href="/sell">
+        <div className="flex flex-col items-center  p-2 cursor-pointer text-sm">
+          <TicketPlus className="w-6 h-6" />
+          <h4 className="text-md">Sell</h4>
+        </div>
+      </Link>
+      <Link href="/home">
+        <div className="flex flex-col items-center  p-2 cursor-pointer text-sm">
+          <BsCart4 className="w-5 h-5" />
+          <h4>Orders</h4>
+        </div>
+      </Link>
       <Link href="/sign-in">
         <div className="flex flex-col items-center  p-2 cursor-pointer text-sm">
           <SignedIn>
@@ -26,18 +39,6 @@ const Footer = () => {
             <FaArrowDown className="w-5 h-5" />
             <h4>Login</h4>
           </SignedOut>
-        </div>
-      </Link>
-      <Link href="/sell">
-        <div className="flex flex-col items-center  p-2 cursor-pointer text-sm">
-          <TicketPlus className="w-5 h-5" />
-          <h4>Sell</h4>
-        </div>
-      </Link>
-      <Link href="/home">
-        <div className="flex flex-col items-center  p-2 cursor-pointer text-sm">
-          <BsCart4 className="w-5 h-5" />
-          <h4>Orders</h4>
         </div>
       </Link>
     </div>
