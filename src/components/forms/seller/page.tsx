@@ -161,7 +161,7 @@ const SellerForm = () => {
               loop: true,
             }}
           >
-            <CarouselContent>
+            <CarouselContent className="my-4">
               {packages.map((item) => (
                 <CarouselItem key={item.id} className="basis-1/2">
                   <div
