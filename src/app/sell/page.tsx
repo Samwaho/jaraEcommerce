@@ -217,7 +217,7 @@ const Sell = () => {
     );
   }
   return (
-    <div className="min-h-screen py-5 px-10">
+    <div className="min-h-screen py-3 px-6">
       <SellerForm />
     </div>
   );

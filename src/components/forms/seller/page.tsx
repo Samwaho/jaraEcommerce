@@ -3,6 +3,13 @@
 import Loading from "@/components/shared/Loading";
 import { Button } from "@/components/ui/button";
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
   Form,
   FormControl,
   FormField,
@@ -10,12 +17,13 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { initSeller } from "@/lib/actions";
+import { initSeller, getPackages } from "@/lib/actions";
 import { sellerSchema } from "@/lib/zodSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Package } from "@prisma/client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaUpload } from "react-icons/fa";
 import { v4 } from "uuid";
@@ -33,9 +41,18 @@ const SellerForm = () => {
       packageId: "",
     },
   });
-
+  const [packages, setPackages] = useState<Package[]>([]);
   const isLoading = form.formState.isSubmitting;
   const router = useRouter();
+
+  const getPackagesData = async () => {
+    const packagesData = await getPackages();
+    console.log("🚀 ~ getPackagesData ~ packagesData:", packagesData);
+    setPackages(packagesData || []);
+  };
+  useEffect(() => {
+    getPackagesData();
+  }, []);
 
   const handleSubmit = async (values: z.infer<typeof sellerSchema>) => {
     try {
@@ -66,11 +83,8 @@ const SellerForm = () => {
         This information is going to be attached to your products details
       </p>
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(handleSubmit)}
-          className="space-y-4 p-3 rounded-lg shadow-md bg-sky-50"
-        >
-          <div className="flex flex-col md:flex-row gap-4">
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
+          <div className="flex flex-col md:flex-row gap-4 p-3 rounded-lg bg-sky-50">
             <FormField
               disabled={isLoading}
               control={form.control}
@@ -140,24 +154,25 @@ const SellerForm = () => {
                 </FormItem>
               )}
             />
-            <FormField
-              disabled={isLoading}
-              control={form.control}
-              name="packageId"
-              render={({ field }) => (
-                <FormItem className="flex-1">
-                  <FormLabel>Package</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="Choose a package"
-                      className="shadow-sm bg-transparent dark:bg-secondary-dark-bg border-slate-400"
-                      {...field}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
           </div>
+          <h1 className="text-xl font-semibold">Select A Subscription</h1>
+          <Carousel
+            opts={{
+              loop: true,
+            }}
+          >
+            <CarouselContent>
+              {packages.map((item) => (
+                <CarouselItem key={item.id}>
+                  <div className="p-3 rounded md shadow-md">
+                    <h4 className="text-black">{item.name}</h4>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
           <div className="flex items-center mt-4 gap-6">
             <Button
               className="flex-1 flex items-center gap-2"
