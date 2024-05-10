@@ -166,7 +166,7 @@ const SellerForm = () => {
                 <CarouselItem key={item.id} className="basis-1/2">
                   <div
                     key={item.name}
-                    className="bg-white p-4 rounded-md shadow-md"
+                    className="bg-sky-50 p-4 rounded-md shadow-md"
                   >
                     <h2 className="text-lg font-bold capitalize text-center">
                       {item.name}
