@@ -104,13 +104,7 @@ const Sell = () => {
   }, [value]);
   console.log(seller);
 
-  if (!seller) {
-    return (
-      <div className="min-h-screen py-5 px-10">
-        <SellerForm />
-      </div>
-    );
-  } else {
+  if (seller) {
     return (
       <div className="min-h-screen bg-m py-5 px-10 mb-12">
         <div className="flex flex-col gap-4">
@@ -222,6 +216,11 @@ const Sell = () => {
       </div>
     );
   }
+  return (
+    <div className="min-h-screen py-5 px-10">
+      <SellerForm />
+    </div>
+  );
 };
 
 export default Sell;

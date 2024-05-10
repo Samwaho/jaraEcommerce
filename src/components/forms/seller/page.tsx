@@ -61,8 +61,15 @@ const SellerForm = () => {
   };
   return (
     <div className="mt-4">
+      <h1 className="text-xl font-bold">Add Your Info</h1>
+      <p className="text-gray-400 mb-2">
+        This information is going to be attached to your products details
+      </p>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
+        <form
+          onSubmit={form.handleSubmit(handleSubmit)}
+          className="space-y-4 p-3 rounded-lg shadow-md bg-sky-50"
+        >
           <div className="flex flex-col md:flex-row gap-4">
             <FormField
               disabled={isLoading}
