@@ -46,7 +46,6 @@ const Categories = () => {
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search category..." />
           <CommandEmpty>No category found.</CommandEmpty>
           <CommandGroup>
             {categories.map((category) => (
