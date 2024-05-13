@@ -168,7 +168,7 @@ const SellerForm = () => {
               <div key={item.id}>
                 <div
                   key={item.name}
-                  className="bg-sky-50 p-4 rounded-md shadow-md"
+                  className="bg-sky-50 p-4 rounded-md shadow-md w-[400px]"
                 >
                   <h2 className="text-lg font-bold capitalize text-center">
                     {item.name}
