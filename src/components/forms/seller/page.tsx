@@ -165,7 +165,7 @@ const SellerForm = () => {
 
           <SliderComponent>
             {packages.map((item) => (
-              <div key={item.id}>
+              <div key={item.id} className="w-full flex items-center justify-center">
                 <div
                   key={item.name}
                   className="bg-sky-50 p-4 rounded-md shadow-md w-[250px]"
