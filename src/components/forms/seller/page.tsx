@@ -190,7 +190,7 @@ const SellerForm = () => {
               </div>
             ))}
           </SliderComponent>
-          <div className="flex items-center mt-4 gap-6">
+          <div className="flex items-center mt-8 gap-6">
             <Button
               className="flex-1 flex items-center gap-2"
               disabled={isLoading}
