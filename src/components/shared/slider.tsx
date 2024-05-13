@@ -11,11 +11,11 @@ const SliderComponent = ({ children }: Props) => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 1,
     slidesToScroll: 1,
   };
   return (
-    <div className="slider-container">
+    <div className="slider-container mb-4">
       <Slider {...settings}>{children}</Slider>
     </div>
   );
