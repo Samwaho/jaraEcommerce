@@ -165,10 +165,13 @@ const SellerForm = () => {
 
           <SliderComponent>
             {packages.map((item) => (
-              <div key={item.id} className="w-full flex items-center justify-center">
+              <div
+                key={item.id}
+                className="w-full flex items-center justify-center"
+              >
                 <div
                   key={item.name}
-                  className="bg-sky-50 p-4 rounded-md shadow-md w-[250px]"
+                  className="bg-sky-50 p-4 rounded-md shadow-md mx-auto w-[250px]"
                 >
                   <h2 className="text-lg font-bold capitalize text-center">
                     {item.name}
@@ -190,7 +193,7 @@ const SellerForm = () => {
               </div>
             ))}
           </SliderComponent>
-          <div className="flex items-center mt-8 gap-6">
+          <div className="flex items-center mt-6 gap-6">
             <Button
               className="flex-1 flex items-center gap-2"
               disabled={isLoading}

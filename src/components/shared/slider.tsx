@@ -15,7 +15,7 @@ const SliderComponent = ({ children }: Props) => {
     slidesToScroll: 1,
   };
   return (
-    <div className="slider-container">
+    <div className="slider-container pb-6">
       <Slider {...settings}>{children}</Slider>
     </div>
   );
