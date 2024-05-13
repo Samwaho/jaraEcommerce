@@ -11,10 +11,14 @@ const SliderComponent = ({ children }: Props) => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: 2,
+    slidesToScroll: 1,
   };
-  return <Slider {...settings}>{children}</Slider>;
+  return (
+    <div className="slider-container">
+      <Slider {...settings}>{children}</Slider>
+    </div>
+  );
 };
 
 export default SliderComponent;
