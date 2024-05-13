@@ -1,6 +1,7 @@
 "use client";
 
 import Loading from "@/components/shared/Loading";
+import SliderComponent from "@/components/shared/slider";
 import { Button } from "@/components/ui/button";
 import {
   Carousel,
@@ -162,41 +163,33 @@ const SellerForm = () => {
             </p>
           </div>
 
-          <Carousel
-            opts={{
-              loop: true,
-            }}
-          >
-            <CarouselContent className="my-4">
-              {packages.map((item) => (
-                <CarouselItem key={item.id} className="basis-1/2">
-                  <div
-                    key={item.name}
-                    className="bg-sky-50 p-4 rounded-md shadow-md"
-                  >
-                    <h2 className="text-lg font-bold capitalize text-center">
-                      {item.name}
-                    </h2>
-                    <div className="flex items-center justify-between mt-3">
-                      <h4 className="font-semibold">Days:</h4>
-                      <p>{item.days}</p>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <h4 className="font-semibold">Ads:</h4>
-                      <p>{item.ads}</p>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <h4 className="font-semibold">Price:</h4>
-                      <p>Ksh. {item.price}</p>
-                    </div>
-                    <Button className="mt-3 w-full h-8">Subscribe</Button>
+          <SliderComponent>
+            {packages.map((item) => (
+              <div key={item.id}>
+                <div
+                  key={item.name}
+                  className="bg-sky-50 p-4 rounded-md shadow-md"
+                >
+                  <h2 className="text-lg font-bold capitalize text-center">
+                    {item.name}
+                  </h2>
+                  <div className="flex items-center justify-between mt-3">
+                    <h4 className="font-semibold">Days:</h4>
+                    <p>{item.days}</p>
                   </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-semibold">Ads:</h4>
+                    <p>{item.ads}</p>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-semibold">Price:</h4>
+                    <p>Ksh. {item.price}</p>
+                  </div>
+                  <Button className="mt-3 w-full h-8">Subscribe</Button>
+                </div>
+              </div>
+            ))}
+          </SliderComponent>
           <div className="flex items-center mt-4 gap-6">
             <Button
               className="flex-1 flex items-center gap-2"
