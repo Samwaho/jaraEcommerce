@@ -171,7 +171,7 @@ const SellerForm = () => {
               >
                 <div
                   key={item.name}
-                  className="bg-sky-50 p-4 rounded-md shadow-md mx-auto w-[250px]"
+                  className="bg-sky-50 p-4 rounded-md shadow-md mx-2 w-[180px]"
                 >
                   <h2 className="text-lg font-bold capitalize text-center">
                     {item.name}
