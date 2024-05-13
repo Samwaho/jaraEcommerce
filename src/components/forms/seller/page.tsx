@@ -77,7 +77,7 @@ const SellerForm = () => {
     }
   };
   return (
-    <div className="mt-4">
+    <div className="mt-4 mb-12">
       <h1 className="text-xl font-bold">Add Your Info</h1>
       <p className="text-gray-400 mb-2">
         This information is going to be attached to your products details
@@ -156,6 +156,9 @@ const SellerForm = () => {
             />
           </div>
           <h1 className="text-xl font-semibold">Select A Subscription</h1>
+          <p className="text-gray-400">
+            Choose a subscription package to start posting ads.
+          </p>
           <Carousel
             opts={{
               loop: true,
