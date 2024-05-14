@@ -4,7 +4,7 @@ import SliderComponent from "../shared/slider";
 
 const Hero = () => {
   return (
-    <div className="bg-white pt-2">
+    <div className="bg-white overflow-hidden">
       <SliderComponent slidesToShow={1} autoPlay={true}>
         <Image
           src="/Shopping cart-8.png"
