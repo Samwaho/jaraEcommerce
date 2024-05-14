@@ -208,7 +208,7 @@ const SellerForm = () => {
                 </div>
               )}
             </Button>
-            <Link className="flex-1" href={`/home`}>
+            <Link className="flex-1" href={`/`}>
               <Button
                 className="w-full bg-transparent border border-red-500 text-red-500"
                 disabled={isLoading}
