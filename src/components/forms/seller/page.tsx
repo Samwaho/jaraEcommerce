@@ -173,20 +173,20 @@ const SellerForm = () => {
                   key={item.name}
                   className="bg-sky-50 p-4 rounded-md shadow-md "
                 >
-                  <h2 className="text-lg font-bold capitalize text-center">
+                  <h2 className="text-md font-bold capitalize text-center">
                     {item.name}
                   </h2>
                   <div className="flex items-center justify-between mt-3">
-                    <h4 className="font-semibold">Days:</h4>
-                    <p>{item.days}</p>
+                    <h4 className="font-semibold text-sm">Days:</h4>
+                    <p className="text-sm truncate">{item.days}</p>
                   </div>
                   <div className="flex items-center justify-between">
-                    <h4 className="font-semibold">Ads:</h4>
-                    <p>{item.ads}</p>
+                    <h4 className="font-semibold text-sm">Ads:</h4>
+                    <p className="text-sm truncate">{item.ads}</p>
                   </div>
                   <div className="flex items-center justify-between">
-                    <h4 className="font-semibold">Price:</h4>
-                    <p>Ksh. {item.price}</p>
+                    <h4 className="font-semibold text-sm">Price:</h4>
+                    <p className="text-sm truncate">Ksh. {item.price}</p>
                   </div>
                   <Button className="mt-3 w-full h-8">Subscribe</Button>
                 </div>
