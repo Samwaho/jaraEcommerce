@@ -20,7 +20,7 @@ const SliderComponent = ({ children, slidesToShow, autoPlay }: Props) => {
     autoplaySpeed: 5000,
   };
   return (
-    <div className="slider-container pb-6">
+    <div className="slider-container pb-6 bg-main-bg">
       <Slider {...settings}>{children}</Slider>
     </div>
   );
