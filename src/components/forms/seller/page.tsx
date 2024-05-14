@@ -167,7 +167,7 @@ const SellerForm = () => {
             {packages.map((item) => (
               <div
                 key={item.id}
-                className=" flex items-center justify-center mx-2 w-[180px]"
+                className=" flex items-center justify-center px-2 w-[180px]"
               >
                 <div
                   key={item.name}
