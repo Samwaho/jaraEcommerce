@@ -163,7 +163,7 @@ const SellerForm = () => {
             </p>
           </div>
 
-          <SliderComponent>
+          <SliderComponent slidesToShow={2} autoPlay={false}>
             {packages.map((item) => (
               <div
                 key={item.id}

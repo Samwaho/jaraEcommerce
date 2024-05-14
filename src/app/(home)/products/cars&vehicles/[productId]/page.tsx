@@ -14,36 +14,28 @@ import { getVehicleById } from "@/lib/actions";
 import Image from "next/image";
 import React from "react";
 import Autoplay from "embla-carousel-autoplay";
+import SliderComponent from "@/components/shared/slider";
 
 const Page = async ({ params }: { params: { productId: string } }) => {
   const vehicle = await getVehicleById(params.productId);
   return (
     <div className="p-4 min-h-screen bg-main-bg pb-14">
       <div className=" -mt-4 bg-white shadow-md rounded-lg p-3 ">
-        <Carousel
-          opts={{
-            loop: true,
-          }}
-          className="pb-4 bg-main-bg p-3 rounded-md"
-        >
-          <CarouselContent>
-            {vehicle?.imageUrls.map((image) => (
-              <CarouselItem key={image}>
-                <div className="flex items-center justify-center w-full">
-                  <Image
-                    src={image}
-                    alt={image}
-                    width={300}
-                    height={300}
-                    className=""
-                  />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+        <SliderComponent slidesToShow={1} autoPlay>
+          {vehicle?.imageUrls.map((image) => (
+            <div key={image}>
+              <div className="flex items-center justify-center w-full">
+                <Image
+                  src={image}
+                  alt={image}
+                  width={300}
+                  height={300}
+                  className=""
+                />
+              </div>
+            </div>
+          ))}
+        </SliderComponent>
 
         <h2 className="mt-4 font-bold text-xl">{`Ksh ${vehicle?.price}`}</h2>
         <h2 className="mt-4 font-bold uppercase">Product details</h2>

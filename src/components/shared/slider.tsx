@@ -5,14 +5,18 @@ import Slider from "react-slick";
 
 type Props = {
   children: React.ReactNode;
+  slidesToShow: number;
+  autoPlay: boolean;
 };
-const SliderComponent = ({ children }: Props) => {
+const SliderComponent = ({ children, slidesToShow, autoPlay }: Props) => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: slidesToShow,
     slidesToScroll: 1,
+    autoplay: autoPlay,
+    autoplaySpeed: 2000,
   };
   return (
     <div className="slider-container pb-6">
