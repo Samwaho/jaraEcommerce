@@ -10,42 +10,42 @@ const Hero = () => {
           src="/Shopping cart-8.png"
           alt="Banner Component"
           width={1400}
-          height={1400}
+          height={300}
           className="w-full"
         />
         <Image
           src="/Agri-8.png"
           alt="Banner Component"
           width={1400}
-          height={1400}
+          height={300}
           className="w-full"
         />
         <Image
           src="/Beaty-8.png"
           alt="Banner Component"
           width={1400}
-          height={1400}
+          height={300}
           className="w-full"
         />
         <Image
           src="/car-8.png"
           alt="Banner Component"
           width={1400}
-          height={1400}
+          height={300}
           className="w-full"
         />
         <Image
           src="/Electronics-8.png"
           alt="Banner Component"
           width={1400}
-          height={1400}
+          height={300}
           className="w-full"
         />
         <Image
           src="/Real estate-8.png"
           alt="Banner Component"
           width={1400}
-          height={1400}
+          height={300}
           className="w-full"
         />
       </SliderComponent>
