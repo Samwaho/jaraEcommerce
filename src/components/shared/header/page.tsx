@@ -31,7 +31,7 @@ const Header = () => {
           <FaInstagram className=" cursor-pointer hover:opacity-85 md:text-2xl" />
         </Link>
       </div>
-      <div className="hidden md:flex items-center gap-6">
+      <div className="hidden md:flex items-center gap-10">
         <Link href="/">
           <h4 className="font-semibold text-xl cursor-pointer">Home</h4>
         </Link>
