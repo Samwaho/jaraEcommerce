@@ -8,7 +8,7 @@ type Props = {
 const MasonryGrid = ({ children }: Props) => {
   return (
     <Masonry
-      breakpointCols={2}
+      breakpointCols={4}
       className="my-masonry-grid"
       columnClassName="my-masonry-grid_column"
     >

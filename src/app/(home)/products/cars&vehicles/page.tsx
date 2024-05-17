@@ -9,7 +9,7 @@ const Page = async () => {
   const products = await getVehiclesProducts();
   return (
     <div className="min-h-screen bg-main-bg pb-14">
-      <div className="bg-white pt-2">
+      <div className="xl:px-28 rounded-b-md">
         <Image
           src="/car-8.png"
           alt="Banner Component"
