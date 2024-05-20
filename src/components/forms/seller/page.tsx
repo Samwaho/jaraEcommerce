@@ -198,7 +198,7 @@ const SellerForm = () => {
                   </div>
                   <Dialog>
                     <DialogTrigger asChild>
-                      <Button className="mt-3 w-full h-8">Subscribe</Button>
+                      <Button className="mt-3 w-full h-8" type="button">Subscribe</Button>
                     </DialogTrigger>
                     <DialogContent>
                       <DialogTitle>
