@@ -11,6 +11,12 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
   Form,
   FormControl,
   FormField,
@@ -190,7 +196,16 @@ const SellerForm = () => {
                     <h4 className="font-semibold text-sm">Price:</h4>
                     <p className="text-sm truncate">Ksh. {item.price}</p>
                   </div>
-                  <Button className="mt-3 w-full h-8">Subscribe</Button>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="mt-3 w-full h-8">Subscribe</Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogTitle>
+                        Purchace Subscription {item.name}
+                      </DialogTitle>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               </div>
             ))}
