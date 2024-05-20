@@ -31,28 +31,37 @@ const Page = async () => {
                   alt={product.title}
                   width={150}
                   height={200}
+                  className="w-full"
                 />
-                <h2 className="font-semibold">{`Ksh ${product.price}`}</h2>
+                <h2 className="font-semibold lg:text-lg">{`Ksh ${product.price}`}</h2>
                 <div className="flex flex-col gap-1">
                   <div className="flex items-center justify-between gap-6">
-                    <h3 className="font-semibold text-sm">Title:</h3>
-                    <p className="text-sm truncate">{product.title}</p>
+                    <h3 className="font-semibold text-sm lg:text-md">Title:</h3>
+                    <p className="text-sm lg:text-md truncate">
+                      {product.title}
+                    </p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
                     <h3 className="font-semibold text-sm">Brand:</h3>
-                    <p className="text-sm truncate">{product.brand}</p>
+                    <p className="text-sm lg:text-md truncate">
+                      {product.brand}
+                    </p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
                     <h3 className="font-semibold text-sm">Model:</h3>
-                    <p className="text-sm truncate">{product.model}</p>
+                    <p className="text-sm lg:text-md truncate">
+                      {product.model}
+                    </p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
                     <h3 className="font-semibold text-sm">Y.O.M:</h3>
-                    <p className="text-sm truncate">{product.yom}</p>
+                    <p className="text-sm lg:text-md truncate">{product.yom}</p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
                     <h3 className="font-semibold text-sm">Location:</h3>
-                    <p className="text-sm truncate">{product.location}</p>
+                    <p className="text-sm lg:text-md truncate">
+                      {product.location}
+                    </p>
                   </div>
                 </div>
                 <Button className="w-16 h-4">{product.condition}</Button>
