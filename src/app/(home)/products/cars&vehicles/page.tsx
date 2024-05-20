@@ -25,7 +25,7 @@ const Page = async () => {
               key={product.id}
               href={`/products/cars&vehicles/${product.id}`}
             >
-              <div className="p-3 mt-2 flex flex-col gap-2 rounded-xl shadow-md bg-white">
+              <div className="p-3 lg:p-4 mt-2 lg:mt-4 flex flex-col gap-2 lg:gap-4 rounded-xl shadow-md bg-white">
                 <Image
                   src={product.imageUrls[0]}
                   alt={product.title}
@@ -33,33 +33,33 @@ const Page = async () => {
                   height={200}
                   className="w-full"
                 />
-                <h2 className="font-semibold lg:text-lg">{`Ksh ${product.price}`}</h2>
+                <h2 className="font-semibold lg:text-xl">{`Ksh ${product.price}`}</h2>
                 <div className="flex flex-col gap-1">
                   <div className="flex items-center justify-between gap-6">
-                    <h3 className="font-semibold text-sm lg:text-md">Title:</h3>
-                    <p className="text-sm lg:text-md truncate">
+                    <h3 className="font-semibold text-sm lg:text-lg">Title:</h3>
+                    <p className="text-sm lg:text-lg truncate">
                       {product.title}
                     </p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
                     <h3 className="font-semibold text-sm">Brand:</h3>
-                    <p className="text-sm lg:text-md truncate">
+                    <p className="text-sm lg:text-lg truncate">
                       {product.brand}
                     </p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
                     <h3 className="font-semibold text-sm">Model:</h3>
-                    <p className="text-sm lg:text-md truncate">
+                    <p className="text-sm lg:text-lg truncate">
                       {product.model}
                     </p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
                     <h3 className="font-semibold text-sm">Y.O.M:</h3>
-                    <p className="text-sm lg:text-md truncate">{product.yom}</p>
+                    <p className="text-sm lg:text-lg truncate">{product.yom}</p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
                     <h3 className="font-semibold text-sm">Location:</h3>
-                    <p className="text-sm lg:text-md truncate">
+                    <p className="text-sm lg:text-lg truncate">
                       {product.location}
                     </p>
                   </div>
