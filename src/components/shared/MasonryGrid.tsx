@@ -15,7 +15,7 @@ const MasonryGrid = ({ children }: Props) => {
   return (
     <Masonry
       breakpointCols={breakpointColumnsObj}
-      className="my-masonry-grid"
+      className="my-masonry-grid lg:px-28"
       columnClassName="my-masonry-grid_column"
     >
       {children}
