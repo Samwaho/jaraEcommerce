@@ -106,8 +106,8 @@ const Sell = () => {
 
   if (seller) {
     return (
-      <div className="bg-main-bg min-h-screen">
-        <div className=" bg-white p-4 lg:max-w-xl mx-auto rounded-2xl shadow-md">
+      <div className="bg-main-bg min-h-screen py-4">
+        <div className=" bg-white p-6 lg:max-w-xl mx-auto rounded-2xl shadow-md">
           <div className="flex flex-col gap-4">
             <h2 className=" uppercase font-semibold">Product Category</h2>
             <Popover open={open} onOpenChange={setOpen}>
