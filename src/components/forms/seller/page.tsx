@@ -203,28 +203,24 @@ const SellerForm = () => {
                       </Button>
                     </DialogTrigger>
                     <DialogContent>
+                      <DialogTitle className="font-bold text-lg">
+                        Purchase Subscription
+                      </DialogTitle>
                       <div className="bg-sky-50 p-4 my-2 rounded-lg shadow-md w-[180px] mx-auto">
-                        <h2 className="font-bold text-lg">
-                          Purchase Subscription
+                        <h2 className="text-md font-bold capitalize text-center">
+                          {item.name}
                         </h2>
-                        <div>
-                          <h2 className="text-md font-bold capitalize text-center">
-                            {item.name}
-                          </h2>
-                          <div className="flex items-center justify-between mt-3">
-                            <h4 className="font-semibold text-sm">Days:</h4>
-                            <p className="text-sm truncate">{item.days}</p>
-                          </div>
-                          <div className="flex items-center justify-between">
-                            <h4 className="font-semibold text-sm">Ads:</h4>
-                            <p className="text-sm truncate">{item.ads}</p>
-                          </div>
-                          <div className="flex items-center justify-between">
-                            <h4 className="font-semibold text-sm">Price:</h4>
-                            <p className="text-sm truncate">
-                              Ksh. {item.price}
-                            </p>
-                          </div>
+                        <div className="flex items-center justify-between mt-3">
+                          <h4 className="font-semibold text-sm">Days:</h4>
+                          <p className="text-sm truncate">{item.days}</p>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <h4 className="font-semibold text-sm">Ads:</h4>
+                          <p className="text-sm truncate">{item.ads}</p>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <h4 className="font-semibold text-sm">Price:</h4>
+                          <p className="text-sm truncate">Ksh. {item.price}</p>
                         </div>
                       </div>
                     </DialogContent>
