@@ -78,14 +78,14 @@ const SellerForm = () => {
     }
   };
   return (
-    <div className="mt-4 mb-6">
-      <h1 className="text-xl font-bold">Add Your Info</h1>
-      <p className="text-gray-400 mb-2">
+    <div className="mt-4 mb-6 max-w-xl bg-white mx-auto shadow-md rounded-2xl p-4">
+      <h1 className="text-xl lg:text-2xl font-bold">Add Your Info</h1>
+      <p className="text-gray-400 mb-2 lg:mb-4 lg:text-lg">
         This information is going to be attached to your products details
       </p>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
-          <div className="flex flex-col md:flex-row gap-4 p-3 rounded-lg bg-sky-50">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-3 rounded-lg bg-sky-50">
             <FormField
               disabled={isLoading}
               control={form.control}
@@ -96,7 +96,7 @@ const SellerForm = () => {
                   <FormControl>
                     <Input
                       placeholder="Your phone number"
-                      className="shadow-sm bg-transparent dark:bg-secondary-dark-bg border-slate-400"
+                      className="shadow-sm bg-transparent dark:bg-secondary-dark-bg border-slate-400 "
                       {...field}
                     />
                   </FormControl>
