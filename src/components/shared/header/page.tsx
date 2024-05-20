@@ -36,7 +36,7 @@ const Header = () => {
           <h4 className="font-semibold text-xl cursor-pointer">Home</h4>
         </Link>
         <Categories />
-        <Link href="/packages">
+        <Link href="/sell/packages">
           <h4 className="font-semibold text-xl cursor-pointer">
             Subscriptions
           </h4>
