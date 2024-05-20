@@ -43,6 +43,8 @@ const SellerForm = () => {
     },
   });
   const [packages, setPackages] = useState<Package[]>([]);
+  const [selectedPackage, setSelectedPackage] = useState("");
+  const [isSelected, setIsSelected] = useState(false);
   const isLoading = form.formState.isSubmitting;
   const router = useRouter();
 
@@ -196,7 +198,7 @@ const SellerForm = () => {
           <div className="flex items-center mt-6 gap-6">
             <Button
               className="flex-1 flex items-center gap-2"
-              disabled={isLoading}
+              disabled={isLoading || !isSelected}
               type="submit"
             >
               {isLoading ? (

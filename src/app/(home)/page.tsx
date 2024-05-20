@@ -7,7 +7,7 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div className="bg-main-bg min-h-screen">
+    <div className="bg-main-bg min-h-screen pb-8">
       <Hero />
       <SearchJara />
       <Categories />
