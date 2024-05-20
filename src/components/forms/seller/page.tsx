@@ -24,6 +24,7 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { initSeller, getPackages } from "@/lib/actions";
 import { sellerSchema } from "@/lib/zodSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -202,8 +203,8 @@ const SellerForm = () => {
                         Subscribe
                       </Button>
                     </DialogTrigger>
-                    <DialogContent>
-                      <DialogTitle className="font-bold text-lg">
+                    <DialogContent className="mx-4 rounded-2xl shadow-md">
+                      <DialogTitle className="font-bold text-lg text-center">
                         Purchase Subscription
                       </DialogTitle>
                       <div className="bg-sky-50 p-4 my-2 rounded-lg shadow-md w-[180px] mx-auto">
@@ -223,6 +224,18 @@ const SellerForm = () => {
                           <p className="text-sm truncate">Ksh. {item.price}</p>
                         </div>
                       </div>
+                      <Tabs defaultValue="mpesa">
+                        <TabsList className="flex justify-center">
+                          <TabsTrigger value="mpesa">M-Pesa</TabsTrigger>
+                          <TabsTrigger value="card">Card</TabsTrigger>
+                        </TabsList>
+                        <TabsContent value="mpesa">
+                          <p>Mpesa</p>
+                        </TabsContent>
+                        <TabsContent value="card">
+                          <p>Card</p>
+                        </TabsContent>
+                      </Tabs>
                     </DialogContent>
                   </Dialog>
                 </div>
