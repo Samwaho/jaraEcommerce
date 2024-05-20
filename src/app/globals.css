@@ -78,6 +78,13 @@
     margin-top: 10px;
     background-clip: padding-box;
   }
+
+  @media (min-width: 1025px){
+    .my-masonry-grid_column {
+    padding-left: 20px; /* gutter size */
+  }
+  }
+  
   .nav{
     background: rgba(52, 106, 119, 0.3);
     width: max-content;
@@ -92,6 +99,7 @@
     border-radius: 3rem;
     backdrop-filter: blur(20px);
 }
+
 
   @layer base {
     * {
