@@ -64,7 +64,7 @@ const Page = async () => {
                     </p>
                   </div>
                 </div>
-                <Button className="w-16 h-4 absolute bg-gradient-sky top-2 right-2 shadow-md">
+                <Button className="w-fit p-2 text-sm absolute bg-gradient-sky top-2 right-2 shadow-md">
                   {product.condition}
                 </Button>
               </div>
