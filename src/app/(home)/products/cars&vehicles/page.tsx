@@ -33,7 +33,7 @@ const Page = async () => {
                   height={200}
                   className="w-full"
                 />
-                <h2 className="font-semibold lg:text-xl">{`Ksh ${product.price}`}</h2>
+                <h2 className="font-semibold lg:text-xl text-sky-600">{`Ksh ${product.price}`}</h2>
                 <div className="flex flex-col gap-1">
                   <div className="flex items-center justify-between gap-6">
                     <h3 className="font-semibold text-sm lg:text-lg">Title:</h3>
