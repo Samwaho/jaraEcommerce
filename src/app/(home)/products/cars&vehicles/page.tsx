@@ -42,31 +42,31 @@ const Page = async () => {
                 <div className="flex flex-col gap-1">
                   <div className="flex items-center justify-between gap-6">
                     <h3 className="text-sm lg:text-lg">Title:</h3>
-                    <p className="text-sm font-semibold lg:text-lg truncate">
+                    <p className="text-sm lg:text-lg truncate">
                       {product.title}
                     </p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
                     <h3 className="text-sm">Brand:</h3>
-                    <p className="text-sm font-semibold lg:text-lg truncate">
+                    <p className="text-sm lg:text-lg truncate">
                       {product.brand}
                     </p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
                     <h3 className="text-sm">Model:</h3>
-                    <p className="text-sm font-semibold lg:text-lg truncate">
+                    <p className="text-sm lg:text-lg truncate">
                       {product.model}
                     </p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
                     <h3 className="text-sm">Y.O.M:</h3>
-                    <p className="text-sm font-semibold lg:text-lg truncate">
+                    <p className="text-sm lg:text-lg truncate">
                       {product.yom}
                     </p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
                     <h3 className="text-sm">Location:</h3>
-                    <p className="text-sm font-semibold lg:text-lg truncate">
+                    <p className="text-sm lg:text-lg truncate">
                       {product.location}
                     </p>
                   </div>
