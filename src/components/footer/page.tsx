@@ -58,7 +58,7 @@ const Footer = () => {
                 <div className="p-2 bg-black rounded-full w-fit">
                   <Image src="/LOGO.png" alt="logo" width={70} height={70} />
                 </div>
-                <h1 className="font-bold text-2xl">Jara Marketing</h1>
+                <h1 className="font-bold text-2xl uppercase">Jara.co.ke</h1>
               </div>
 
               <p className="mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left">

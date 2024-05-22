@@ -13,10 +13,10 @@ import Categories from "./categories/page";
 const Header = () => {
   return (
     <div className="bg-gradient-to-tr from-sky-400 to-sky-700 text-main-text flex items-center justify-between py-1 px-2 xl:px-28">
-      <div className="flex items-center">
+      <Link href="/" className="flex items-center">
         <Image src="/jara logo.svg" alt="logo" width={56} height={56} />
-        <h4 className="font-bold text-lg md:text-2xl">Jara Marketing</h4>
-      </div>
+        <h4 className="font-bold text-lg md:text-2xl uppercase">Jara.co.ke</h4>
+      </Link>
       <div className="flex items-center gap-3 md:hidden">
         <Link href="">
           <FaTiktok className=" cursor-pointer hover:opacity-85 md:text-2xl" />
