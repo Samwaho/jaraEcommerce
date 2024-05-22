@@ -36,7 +36,7 @@ const Page = async () => {
                 />
                 <div className="flex items-center justify-between">
                   <h2 className="lg:text-xl text-sky-600">{`Ksh ${product.price}`}</h2>
-                  <Heart />
+                  <Heart className="w-4 h-4" />
                 </div>
 
                 <div className="flex flex-col gap-1">
@@ -71,7 +71,7 @@ const Page = async () => {
                     </p>
                   </div>
                 </div>
-                <Button className="w-fit h-4 p-2 text-sm absolute bg-gradient-sky top-2 right-2 shadow-md">
+                <Button className="w-fit h-4 p-2 text-sm absolute bg-gradient-sky capitalize top-2 right-2 shadow-md">
                   {product.condition}
                 </Button>
               </div>
