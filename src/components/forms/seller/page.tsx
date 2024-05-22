@@ -203,7 +203,7 @@ const SellerForm = () => {
                         Subscribe
                       </Button>
                     </DialogTrigger>
-                    <DialogContent className="mx-4 rounded-2xl shadow-md">
+                    <DialogContent className="mx-4 rounded-2xl shadow-md w-[90%]">
                       <DialogTitle className="font-bold text-lg text-center">
                         Purchase Subscription
                       </DialogTitle>
