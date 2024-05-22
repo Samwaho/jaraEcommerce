@@ -1,6 +1,7 @@
 import MasonryGrid from "@/components/shared/MasonryGrid";
 import { Button } from "@/components/ui/button";
 import { getVehiclesProducts } from "@/lib/actions";
+import { Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -33,38 +34,44 @@ const Page = async () => {
                   height={200}
                   className="w-full"
                 />
-                <h2 className="font-semibold lg:text-xl text-sky-600">{`Ksh ${product.price}`}</h2>
+                <div className="flex items-center justify-between">
+                  <h2 className="lg:text-xl text-sky-600">{`Ksh ${product.price}`}</h2>
+                  <Heart />
+                </div>
+
                 <div className="flex flex-col gap-1">
                   <div className="flex items-center justify-between gap-6">
-                    <h3 className="font-semibold text-sm lg:text-lg">Title:</h3>
-                    <p className="text-sm lg:text-lg truncate">
+                    <h3 className="text-sm lg:text-lg">Title:</h3>
+                    <p className="text-sm font-semibold lg:text-lg truncate">
                       {product.title}
                     </p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
-                    <h3 className="font-semibold text-sm">Brand:</h3>
-                    <p className="text-sm lg:text-lg truncate">
+                    <h3 className="text-sm">Brand:</h3>
+                    <p className="text-sm font-semibold lg:text-lg truncate">
                       {product.brand}
                     </p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
-                    <h3 className="font-semibold text-sm">Model:</h3>
-                    <p className="text-sm lg:text-lg truncate">
+                    <h3 className="text-sm">Model:</h3>
+                    <p className="text-sm font-semibold lg:text-lg truncate">
                       {product.model}
                     </p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
-                    <h3 className="font-semibold text-sm">Y.O.M:</h3>
-                    <p className="text-sm lg:text-lg truncate">{product.yom}</p>
+                    <h3 className="text-sm">Y.O.M:</h3>
+                    <p className="text-sm font-semibold lg:text-lg truncate">
+                      {product.yom}
+                    </p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
-                    <h3 className="font-semibold text-sm">Location:</h3>
-                    <p className="text-sm lg:text-lg truncate">
+                    <h3 className="text-sm">Location:</h3>
+                    <p className="text-sm font-semibold lg:text-lg truncate">
                       {product.location}
                     </p>
                   </div>
                 </div>
-                <Button className="w-fit p-2 text-sm absolute bg-gradient-sky top-2 right-2 shadow-md">
+                <Button className="w-fit h-4 p-2 text-sm absolute bg-gradient-sky top-2 right-2 shadow-md">
                   {product.condition}
                 </Button>
               </div>
