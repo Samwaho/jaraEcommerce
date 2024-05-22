@@ -25,7 +25,7 @@ const Page = async () => {
               key={product.id}
               href={`/products/cars&vehicles/${product.id}`}
             >
-              <div className="p-3 lg:p-4 mt-2 lg:mt-4 flex flex-col gap-2 lg:gap-4 rounded-xl shadow-md bg-white">
+              <div className="p-3 lg:p-4 mt-2 lg:mt-4 flex flex-col gap-2 lg:gap-4 rounded-xl shadow-md bg-white relative">
                 <Image
                   src={product.imageUrls[0]}
                   alt={product.title}
@@ -64,7 +64,7 @@ const Page = async () => {
                     </p>
                   </div>
                 </div>
-                <Button className="w-16 h-4">{product.condition}</Button>
+                <Button className="w-16 h-4 absolute top-1 right-1">{product.condition}</Button>
               </div>
             </Link>
           );
