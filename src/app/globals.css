@@ -108,4 +108,7 @@
     body {
       @apply bg-background text-foreground;
     }
+    .bg-grad-ent-sky {
+      @apply bg-gradient-to-tr from-sky-400 to-sky-700;
+    }
   }
