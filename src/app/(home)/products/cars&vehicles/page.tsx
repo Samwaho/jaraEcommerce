@@ -35,8 +35,11 @@ const Page = async () => {
                   className="w-full"
                 />
                 <div className="flex items-center justify-between">
-                  <h2 className="lg:text-xl text-sky-600">{`Ksh ${product.price}`}</h2>
-                  <Heart className="w-4 h-4" />
+                  <h2 className="lg:text-xl font-semibold text-sky-600">{`Ksh ${product.price}`}</h2>
+                  <span className="flex gap-2">
+                    <Heart className="w-4 h-4 text-rose-500" /> 
+                    <p>2k</p>
+                  </span>
                 </div>
 
                 <div className="flex flex-col gap-1">
@@ -60,9 +63,7 @@ const Page = async () => {
                   </div>
                   <div className="flex items-center justify-between gap-6">
                     <h3 className="text-sm">Y.O.M:</h3>
-                    <p className="text-sm lg:text-lg truncate">
-                      {product.yom}
-                    </p>
+                    <p className="text-sm lg:text-lg truncate">{product.yom}</p>
                   </div>
                   <div className="flex items-center justify-between gap-6">
                     <h3 className="text-sm">Location:</h3>
