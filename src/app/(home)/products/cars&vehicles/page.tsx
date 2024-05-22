@@ -37,8 +37,8 @@ const Page = async () => {
                 <div className="flex items-center justify-between">
                   <h2 className="lg:text-xl font-semibold text-sky-600">{`Ksh ${product.price}`}</h2>
                   <span className="flex gap-1 items-center">
-                    <Heart className="w-4 h-4 text-rose-500" /> 
-                    <p classNam="text-sm">2k</p>
+                    <Heart className="w-4 h-4 text-rose-500" />
+                    <p className="text-sm">2k</p>
                   </span>
                 </div>
 
