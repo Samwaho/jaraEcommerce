@@ -180,6 +180,7 @@ const SellerForm = () => {
                 price={item.price}
                 days={item.days}
                 ads={item.ads}
+                key={item.id}
               />
             ))}
           </SliderComponent>
