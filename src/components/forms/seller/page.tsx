@@ -102,7 +102,9 @@ const SellerForm = () => {
               name="phone"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel className="font-semibold text-sky-600">Phone No.</FormLabel>
+                  <FormLabel className="font-semibold text-lg">
+                    Phone No.
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Your phone number"
@@ -119,7 +121,9 @@ const SellerForm = () => {
               name="county"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel className="font-semibold text-sky-600">County</FormLabel>
+                  <FormLabel className="font-semibold text-lg">
+                    County
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Your county"
@@ -136,7 +140,9 @@ const SellerForm = () => {
               name="address"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel className="font-semibold text-sky-600">Address</FormLabel>
+                  <FormLabel className="font-semibold text-lg">
+                    Address
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Your address"
@@ -154,7 +160,9 @@ const SellerForm = () => {
               name="whatsappUrl"
               render={({ field }) => (
                 <FormItem className="flex-1">
-                  <FormLabel className="font-semibold text-sky-600">Whatsapp No.</FormLabel>
+                  <FormLabel className="font-semibold text-lg">
+                    Whatsapp No.
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Your whatsapp number"

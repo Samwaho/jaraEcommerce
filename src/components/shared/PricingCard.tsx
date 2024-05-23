@@ -35,7 +35,9 @@ const PricingCard = ({ title, price, days, ads }: Props) => {
         </div>
       </CardContent>
       <CardFooter className="bg-gray-100 px-2 py-2 rounded-b-2xl">
-        <Button className=" rounded-md px-4 mx-auto h-6">Subscribe</Button>
+        <Button type="button" className=" rounded-md px-4 mx-auto h-6">
+          Subscribe
+        </Button>
       </CardFooter>
     </Card>
   );
