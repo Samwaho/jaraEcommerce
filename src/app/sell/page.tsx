@@ -220,7 +220,7 @@ const Sell = () => {
     );
   }
   return (
-    <div className="min-h-screen bg-main-bg py-3 px-6 lg:px-28">
+    <div className="min-h-screen bg-main-bg py-2 px-3 lg:px-28">
       <SellerForm />
     </div>
   );

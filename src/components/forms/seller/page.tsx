@@ -1,6 +1,7 @@
 "use client";
 
 import Loading from "@/components/shared/Loading";
+import PricingCard from "@/components/shared/PricingCard";
 import SliderComponent from "@/components/shared/slider";
 import { Button } from "@/components/ui/button";
 import {
@@ -172,74 +173,14 @@ const SellerForm = () => {
             </p>
           </div>
 
-          <SliderComponent slidesToShow={2} autoPlay={false}>
+          <SliderComponent slidesToShow={1} autoPlay={false}>
             {packages.map((item) => (
-              <div
-                key={item.id}
-                className=" flex items-center justify-center px-2 w-[180px]"
-              >
-                <div
-                  key={item.name}
-                  className="bg-sky-50 p-4 my-2 rounded-lg shadow-md "
-                >
-                  <h2 className="text-md font-bold capitalize text-center">
-                    {item.name}
-                  </h2>
-                  <div className="flex items-center justify-between mt-3">
-                    <h4 className="font-semibold text-sm">Days:</h4>
-                    <p className="text-sm truncate">{item.days}</p>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <h4 className="font-semibold text-sm">Ads:</h4>
-                    <p className="text-sm truncate">{item.ads}</p>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <h4 className="font-semibold text-sm">Price:</h4>
-                    <p className="text-sm truncate">Ksh. {item.price}</p>
-                  </div>
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button className="mt-3 w-full h-8" type="button">
-                        Subscribe
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="mx-auto rounded-2xl shadow-md w-[90%]">
-                      <DialogTitle className="font-bold text-lg text-center">
-                        Purchase Subscription
-                      </DialogTitle>
-                      <div className="bg-sky-50 p-4 my-2 rounded-lg shadow-md w-[180px] mx-auto">
-                        <h2 className="text-md font-bold capitalize text-center">
-                          {item.name}
-                        </h2>
-                        <div className="flex items-center justify-between mt-3">
-                          <h4 className="font-semibold text-sm">Days:</h4>
-                          <p className="text-sm truncate">{item.days}</p>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <h4 className="font-semibold text-sm">Ads:</h4>
-                          <p className="text-sm truncate">{item.ads}</p>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <h4 className="font-semibold text-sm">Price:</h4>
-                          <p className="text-sm truncate">Ksh. {item.price}</p>
-                        </div>
-                      </div>
-                      <Tabs defaultValue="mpesa">
-                        <TabsList className="flex justify-center">
-                          <TabsTrigger value="mpesa">M-Pesa</TabsTrigger>
-                          <TabsTrigger value="card">Card</TabsTrigger>
-                        </TabsList>
-                        <TabsContent value="mpesa">
-                          <p>Mpesa</p>
-                        </TabsContent>
-                        <TabsContent value="card">
-                          <p>Card</p>
-                        </TabsContent>
-                      </Tabs>
-                    </DialogContent>
-                  </Dialog>
-                </div>
-              </div>
+              <PricingCard
+                title={item.name}
+                price={item.price}
+                days={item.days}
+                ads={item.ads}
+              />
             ))}
           </SliderComponent>
           <div className="flex items-center mt-6 gap-6">
