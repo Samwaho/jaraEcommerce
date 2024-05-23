@@ -23,19 +23,19 @@ const PricingCard = ({ title, price, days, ads }: Props) => {
         </CardHeader>
         <CardContent className="space-y-4 px-2 py-4">
           <div className="flex items-baseline justify-center gap-2">
-            <span className="text-xl font-bold">Ksh.{price}</span>
-            <span className="text-gray-500">/month</span>
+            <span className="text-lg font-bold">Ksh.{price}</span>
+            <span className="text-gray-500">/m</span>
           </div>
           <div className="flex items-center justify-center gap-2">
             <TagsIcon className="h-6 w-6 fill-sky-500" />
-            <span className="text-lg font-bold">{ads} Ads</span>
+            <span className="text-md font-bold">{ads} Ads</span>
           </div>
           <div className="flex items-center justify-center gap-2">
             <CalendarDaysIcon className="h-6 w-6 fill-sky-500" />
-            <span className="text-lg font-bold">{days} Days</span>
+            <span className="text-md font-bold">{days}</span>
           </div>
         </CardContent>
-        <CardFooter className="bg-gray-100 px-8 py-2 rounded-b-2xl">
+        <CardFooter className="bg-gray-100 px-2 py-2 rounded-b-2xl">
           <Button className="w-full bg-slate-800">Subscribe</Button>
         </CardFooter>
       </Card>
