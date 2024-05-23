@@ -173,7 +173,7 @@ const SellerForm = () => {
             </p>
           </div>
 
-          <SliderComponent slidesToShow={1} autoPlay={false}>
+          <SliderComponent slidesToShow={2} autoPlay={false}>
             {packages.map((item) => (
               <PricingCard
                 title={item.name}
