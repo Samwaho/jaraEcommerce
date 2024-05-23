@@ -18,7 +18,7 @@ const PricingCard = ({ title, price, days, ads }: Props) => {
   return (
     <div className="p-4">
       <Card className="w-[150px] mx-auto max-w-md bg-white text-gray-900 shadow-lg rounded-2xl dark:bg-gray-950 dark:text-gray-50">
-        <CardHeader className="bg-gradient-to-tr from-sky-500 rounded-t-2xl py-2 text-center">
+        <CardHeader className="bg-gradient-to-tr from-sky-500 to-sky-700 rounded-t-2xl py-2 text-center">
           <CardTitle className="text-xl font-bold">{title}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 px-2 py-4">
@@ -36,7 +36,7 @@ const PricingCard = ({ title, price, days, ads }: Props) => {
           </div>
         </CardContent>
         <CardFooter className="bg-gray-100 px-2 py-2 rounded-b-2xl">
-          <Button className="w-full bg-slate-800">Subscribe</Button>
+          <Button className="bg-slate-800 rounded-xl p-2">Subscribe</Button>
         </CardFooter>
       </Card>
     </div>
