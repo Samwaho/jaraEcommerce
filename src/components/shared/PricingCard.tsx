@@ -16,7 +16,7 @@ type Props = {
 };
 const PricingCard = ({ title, price, days, ads }: Props) => {
   return (
-    <Card className="w-[150px] m-2 max-w-md bg-white text-gray-900 shadow-lg rounded-2xl dark:bg-gray-950 dark:text-gray-50">
+    <Card className="w-[150px] m-2 max-w-md bg-sky-50 text-gray-900 shadow-lg rounded-2xl dark:bg-gray-950 dark:text-gray-50">
       <CardHeader className="bg-gradient-sky text-white rounded-t-2xl py-2 text-center">
         <CardTitle className="text-xl font-bold">{title}</CardTitle>
       </CardHeader>
